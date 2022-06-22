@@ -2,41 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cc2306a-c4f6-4611-96d2-a1632aa07ffb" name="Default Changelist" comment="day 3:&#10;设计主页界面，并完善相关实体&#10;解决部分错误">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/noalhell.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Dao/GoodsDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UI/controller/indexController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Goods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UI/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UI/controller/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Seller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/home.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Dao/MyDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Dao/UserDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/UI/controller/HomeController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/UI/controller/HomeController$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/UI/controller/HomeController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/UI/controller/LoginController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/UI/controller/LoginController$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/UI/controller/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/UI/controller/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Utils/JpaUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/StaticResourcesConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/Seller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/Login.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/home.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/sample.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Test.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +53,17 @@
     <option name="SCHEME" value="Project" />
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="zyq" />
+      </list>
+    </option>
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
@@ -216,8 +193,16 @@
       <workItem from="1655007952477" duration="24243000" />
       <workItem from="1655083605667" duration="46000" />
       <workItem from="1655083668363" duration="12760000" />
-      <workItem from="1655855790529" duration="12466000" />
+      <workItem from="1655855790529" duration="13507000" />
     </task>
+    <task id="LOCAL-00001" summary="day 3:&#10;设计主页界面，并完善相关实体&#10;解决部分错误">
+      <created>1655870920765</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1655870920765</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,10 +243,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="614" y="354" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.864@0.0.1536.864" timestamp="1655855813291" />
-    <state x="335" y="71" width="822" height="638" key="CommitChangelistDialog2" timestamp="1655870887671">
+    <state x="335" y="71" width="1046" height="638" key="CommitChangelistDialog2" timestamp="1655942051625">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="335" y="71" width="822" height="638" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1655870887671" />
+    <state x="335" y="71" width="1046" height="638" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1655942051625" />
     <state x="664" y="211" key="FileChooserDialogImpl" timestamp="1655865714356">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -317,6 +302,10 @@
     </state>
     <state x="199" y="0" width="1038" height="712" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1655865445570" />
     <state x="304" y="0" width="1211" height="1080" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1655118929750" />
+    <state x="364" y="152" key="Vcs.Push.Dialog.v2" timestamp="1655871003292">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="364" y="152" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1655871003292" />
     <state x="604" y="269" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1655024937776">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
