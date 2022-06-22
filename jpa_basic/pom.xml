@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>jpa_basic</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <build>
+        <resources>
+            <resource>
+                <!-- 这里是放在 src/main/java-->
+                <directory>src/main/java/UI</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.fxml</include>
+                    <include>**/fxml/*.fxml</include>
+                    <!-- 如果想要弄个包名专门放fxml文件，像上一行这样添加设置 -->
+                    <!-- 之后，使用getResource("fxml/xx.fxml")这样子 -->
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <!-- 此处按需编写更具体的配置 -->
+                <configuration>
+                    <transformers>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                            <!--                            程序运行入口配置-->
+                            <mainClass>UI.Main</mainClass>
+                        </transformer>
+                    </transformers>
+<!--                    <relocations>-->
+<!--                        <relocation>-->
+<!--                            &lt;!&ndash;                            <pattern>：原始包名&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            <shadedPattern>：重命名后的包名&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            <excludes>：原始包内不需要重定位的类，类名支持通配符&ndash;&gt;-->
+<!--                            <pattern>org.codehaus.plexus.util</pattern>-->
+<!--                            <shadedPattern>org.shaded.plexus.util</shadedPattern>-->
+<!--                            <excludes>-->
+<!--                                <exclude>org.codehaus.plexus.util.xml.Xpp3Dom</exclude>-->
+<!--                                <exclude>org.codehaus.plexus.util.xml.pull.*</exclude>-->
+<!--                            </excludes>-->
+<!--                        </relocation>-->
+<!--                    </relocations>-->
+                    <!--                    自动移除项目中没有使用到的依赖，以此来最小化 jar 包的体积-->
+<!--                    <minimizeJar>true</minimizeJar>-->
+<!--                    解决包冲突导致  Invalid signature file digest for Manifest main attributes -->
+                    <filters>
+                        <filter>
+                            <artifact>junit:junit</artifact>
+                            <includes>
+                                <include>junit/framework/**</include>
+                                <include>org/junit/**</include>
+                            </includes>
+                            <excludes>
+                                <exclude>org/junit/experimental/**</exclude>
+                                <exclude>org/junit/runners/**</exclude>
+                            </excludes>
+                        </filter>
+                        <filter>
+                            <artifact>*:*</artifact>
+                            <excludes>
+                                <exclude>META-INF/*.SF</exclude>
+                                <exclude>META-INF/*.DSA</exclude>
+                                <exclude>META-INF/*.RSA</exclude>
+                            </excludes>
+                        </filter>
+                    </filters>
+                </configuration>
+<!--解决没主程序清单-->
+                <executions>
+                    <execution>
+                        <!-- 和 package 阶段绑定 -->
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.hibernate.version>5.0.7.Final</project.hibernate.version>
+    </properties>
+
+    <dependencies>
+        <!--         junit-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+            <!-- hibernate对jpa的支持包 -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>${project.hibernate.version}</version>
+            </dependency>
+
+                <!-- c3p0 -->
+                <dependency>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-c3p0</artifactId>
+                    <version>${project.hibernate.version}</version>
+                </dependency>
+
+<!--                 log日志-->
+                <dependency>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                    <version>1.2.12</version>
+                </dependency>
+
+<!--         Mysql and MariaDB-->
+<!--                <dependency>-->
+<!--                    <groupId>mysql</groupId>-->
+<!--                    <artifactId>mysql-connector-java</artifactId>-->
+<!--                    <version>8.0.27</version>-->
+<!--                </dependency>-->
+        <!--        sql server-->
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>6.1.0.jre8</version>
+        </dependency>
+    </dependencies>
+
+</project>
