@@ -22,8 +22,6 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         this.stage = primaryStage;
         URL url = getClass().getResource("/fxml/Login.fxml");
-
-
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(url);
         fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());

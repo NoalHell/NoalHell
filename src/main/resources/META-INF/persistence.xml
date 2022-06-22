@@ -44,11 +44,11 @@
                 <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
                 <!--数据库地址-->
                 <property name="javax.persistence.jdbc.url"
-                          value="jdbc:sqlserver://localhost:1433;DatabaseName=java"/>
+                          value="jdbc:sqlserver://1.14.126.176:1433;DatabaseName=java"/>
                 <!--数据库名-->
                 <property name="javax.persistence.jdbc.user" value="sa"/>
                 <!--数据库密码-->
-                <property name="javax.persistence.jdbc.password" value="Zyq2332636023"/>
+                <property name="javax.persistence.jdbc.password" value="2332636023"/>
 
                 <!--可选配置，配置jpa实现方的配置信息-->
                 <!--配置jpa实现方(hibernate)的配置信息

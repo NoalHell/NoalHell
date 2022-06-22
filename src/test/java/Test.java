@@ -6,7 +6,6 @@ public class Test {
         User user = new User();
         user.setUsername("test");
         user.setPassword("123");
-
         MyDao.insert(user);
     }
 }

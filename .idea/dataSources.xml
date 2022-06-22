@@ -14,5 +14,11 @@
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
       <jdbc-url>jdbc:sqlserver://localhost:1433;database=test</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="java@1.14.126.176" uuid="b5e31166-aee7-48f3-9935-837953a79401">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://1.14.126.176:1433;database=java</jdbc-url>
+    </data-source>
   </component>
 </project>

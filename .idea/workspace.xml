@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1cc2306a-c4f6-4611-96d2-a1632aa07ffb" name="Default Changelist" comment="" />
+    <list default="true" id="1cc2306a-c4f6-4611-96d2-a1632aa07ffb" name="Default Changelist" comment="day 3:&#10;设计主页界面，并完善相关实体&#10;解决部分错误">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/noalhell.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Dao/GoodsDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UI/controller/indexController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entity/Goods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UI/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UI/controller/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Seller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Dao/MyDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Dao/UserDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UI/controller/HomeController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UI/controller/HomeController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UI/controller/HomeController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UI/controller/LoginController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UI/controller/LoginController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UI/controller/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UI/controller/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Utils/JpaUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/StaticResourcesConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entity/Seller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/entity/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/Login.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/home.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/sample.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Test.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +57,21 @@
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="java@1.14.126.176" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="java@1.14.126.176" type="feb32156:DbDataSourceImpl" />
+        <item name="java: database" type="ccb7ac2a:MsImplModel$Database" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="java@1.14.126.176" type="feb32156:DbDataSourceImpl" />
+        <item name="java: database" type="ccb7ac2a:MsImplModel$Database" />
+        <item name="dbo: schema" type="2865ee2e:MsImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="test@localhost" type="feb32156:DbDataSourceImpl" />
       </path>
     </expand>
@@ -35,10 +86,14 @@
     </option>
     <option name="SCHEME" value="Project" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
       </MavenImportingSettings>
     </option>
   </component>
@@ -51,20 +106,26 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql&#10;sqlserver" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.35287356" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
   <component name="RebelAgentSelection">
     <selection>jr</selection>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\magicBook 2019\Desktop\java2\noalhell\src" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="UI" />
+      <recent name="entity" />
       <recent name="Dao" />
+      <recent name="UI" />
       <recent name="Data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -72,7 +133,20 @@
       <recent name="Z:\homeWork\java\jpa_basic\src\main\java" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Main (1)">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="UI.controller.Main" />
+      <module name="noalhell" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="UI.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="UI.Main" />
       <module name="jpa_basic" />
@@ -89,7 +163,7 @@
     </configuration>
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Test" />
-      <module name="jpa_basic" />
+      <module name="noalhell" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -97,11 +171,13 @@
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Test" />
+      <item itemvalue="Application.Main (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Test" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -140,11 +216,16 @@
       <workItem from="1655007952477" duration="24243000" />
       <workItem from="1655083605667" duration="46000" />
       <workItem from="1655083668363" duration="12760000" />
+      <workItem from="1655855790529" duration="12466000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="day 3:&#10;设计主页界面，并完善相关实体&#10;解决部分错误" />
+    <option name="LAST_COMMIT_MESSAGE" value="day 3:&#10;设计主页界面，并完善相关实体&#10;解决部分错误" />
   </component>
   <component name="WindowStateProjectService">
     <state x="770" y="305" key="#Assign_Data_Sources" timestamp="1655024812655">
@@ -155,61 +236,86 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="748" y="234" key="#Project_Structure/0.0.1920.1080@0.0.1920.1080" timestamp="1655008444824" />
-    <state x="663" y="69" width="820" height="816" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1655112796288">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="434" y="88" key="#Test" timestamp="1655856640433">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state x="434" y="88" key="#Test/0.0.1536.864@0.0.1536.864" timestamp="1655856640433" />
+    <state x="530" y="55" width="820" height="816" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1655863483774">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="530" y="55" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1655863483774" />
     <state x="663" y="69" width="820" height="816" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1655112796288" />
     <state x="1163" y="287" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog" timestamp="1655008693510">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="1163" y="287" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1655008693510" />
-    <state x="823" y="197" key="#com.intellij.ide.util.MemberChooser" timestamp="1655087506432">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="658" y="158" key="#com.intellij.ide.util.MemberChooser" timestamp="1655860421306">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state x="658" y="158" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1655860421306" />
     <state x="823" y="197" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1655087506432" />
-    <state x="830" y="264" key="FileChooserDialogImpl" timestamp="1655088923768">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="614" y="354" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1655855813291">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state x="614" y="354" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.864@0.0.1536.864" timestamp="1655855813291" />
+    <state x="335" y="71" width="822" height="638" key="CommitChangelistDialog2" timestamp="1655870887671">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="335" y="71" width="822" height="638" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1655870887671" />
+    <state x="664" y="211" key="FileChooserDialogImpl" timestamp="1655865714356">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="664" y="211" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1655865714356" />
     <state x="830" y="264" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1655088923768" />
-    <state width="1877" height="2" key="GridCell.Tab.0.bottom" timestamp="1655115580139">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="999" height="204" key="GridCell.Tab.0.bottom" timestamp="1655870478870">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state width="999" height="204" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1655870478870" />
     <state width="1877" height="2" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1655115580139" />
-    <state width="1877" height="2" key="GridCell.Tab.0.center" timestamp="1655115580139">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="999" height="204" key="GridCell.Tab.0.center" timestamp="1655870478870">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state width="999" height="204" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1655870478870" />
     <state width="1877" height="2" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1655115580139" />
-    <state width="1877" height="2" key="GridCell.Tab.0.left" timestamp="1655115580138">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="999" height="204" key="GridCell.Tab.0.left" timestamp="1655870478869">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state width="999" height="204" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1655870478869" />
     <state width="1877" height="2" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1655115580138" />
-    <state width="1877" height="2" key="GridCell.Tab.0.right" timestamp="1655115580139">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="999" height="204" key="GridCell.Tab.0.right" timestamp="1655870478870">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state width="999" height="204" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1655870478870" />
     <state width="1877" height="2" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1655115580139" />
-    <state width="1372" height="272" key="GridCell.Tab.1.bottom" timestamp="1655089021203">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="879" height="137" key="GridCell.Tab.1.bottom" timestamp="1655856772295">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state width="879" height="137" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1655856772295" />
     <state width="1372" height="272" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1655089021203" />
-    <state width="1372" height="272" key="GridCell.Tab.1.center" timestamp="1655089021203">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="879" height="137" key="GridCell.Tab.1.center" timestamp="1655856772295">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state width="879" height="137" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1655856772295" />
     <state width="1372" height="272" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1655089021203" />
-    <state width="1372" height="272" key="GridCell.Tab.1.left" timestamp="1655089021203">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="879" height="137" key="GridCell.Tab.1.left" timestamp="1655856772294">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state width="879" height="137" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1655856772294" />
     <state width="1372" height="272" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1655089021203" />
-    <state width="1372" height="272" key="GridCell.Tab.1.right" timestamp="1655089021203">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="879" height="137" key="GridCell.Tab.1.right" timestamp="1655856772295">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state width="879" height="137" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1655856772295" />
     <state width="1372" height="272" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1655089021203" />
-    <state width="220" height="477" key="HiddenNamespacesPopup" timestamp="1655083874133">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="212" height="382" key="HiddenNamespacesPopup" timestamp="1655863526912">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state width="212" height="382" key="HiddenNamespacesPopup/0.0.1536.864@0.0.1536.864" timestamp="1655863526912" />
     <state width="220" height="477" key="HiddenNamespacesPopup/0.0.1920.1080@0.0.1920.1080" timestamp="1655083874133" />
-    <state x="304" y="0" width="1211" height="1080" key="SettingsEditor" timestamp="1655118929750">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="199" y="0" width="1038" height="712" key="SettingsEditor" timestamp="1655865445570">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state x="199" y="0" width="1038" height="712" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1655865445570" />
     <state x="304" y="0" width="1211" height="1080" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1655118929750" />
     <state x="604" y="269" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1655024937776">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -242,6 +348,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/UI/WorkMarkFram.java</url>
           <line>54</line>
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/UI/controller/Main.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
