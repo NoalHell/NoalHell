@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="654.9999000000025" prefWidth="899.5" styleClass="background" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controller.HomeController">
+  <children>
+    <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <bottom>
+        <VBox prefHeight="206.0" prefWidth="792.0">
+          <children>
+            <AnchorPane prefHeight="29.0" prefWidth="850.0" />
+            <AnchorPane prefHeight="174.0" prefWidth="850.0" styleClass="top-segment">
+              <children>
+<!--                <HBox prefHeight="174.0" prefWidth="317.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="288.5" AnchorPane.rightAnchor="14.0">-->
+<!--                  <children>-->
+<!--                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">-->
+<!--                      <children>-->
+<!--                        <Button mnemonicParsing="false" onAction="#manageFoodAction" prefWidth="80.0" text="%manageFood" />-->
+<!--                        <Button mnemonicParsing="false" onAction="#manageFoodTypeAction" prefWidth="80.0" text="%manageFoodType" />-->
+<!--                        <Button mnemonicParsing="false" onAction="#managerTableAction" prefWidth="80.0" text="%manageTable" />-->
+<!--                      </children>-->
+<!--                    </VBox>-->
+<!--                    <VBox alignment="CENTER" prefHeight="144.0" prefWidth="100.0" spacing="20.0">-->
+<!--                      <children>-->
+<!--                        <Button mnemonicParsing="false" onAction="#dayCheckOutAction" prefWidth="80.0" text="%dayCheckOut" />-->
+<!--                        <Button mnemonicParsing="false" onAction="#monthCheckOutAction" prefWidth="80.0" text="%monthCheckOut" />-->
+<!--                        <Button mnemonicParsing="false" onAction="#yearCheckOutAction" prefWidth="80.0" text="%yearCheckOut" />-->
+<!--                      </children>-->
+<!--                    </VBox>-->
+<!--                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">-->
+<!--                      <children>-->
+<!--                        <Button mnemonicParsing="false" onAction="#changePasswordAction" prefWidth="80.0" text="%changePassword" />-->
+<!--                        <Button mnemonicParsing="false" onAction="#showManageUserViewAcion" prefWidth="80.0" text="%manageUser" />-->
+<!--                        <Button mnemonicParsing="false" onAction="#exitAction" prefWidth="80.0" text="%exit" />-->
+<!--                      </children>-->
+<!--                    </VBox>-->
+<!--                  </children>-->
+<!--                </HBox>-->
+                <VBox alignment="CENTER" prefHeight="169.0" prefWidth="130.0" spacing="20.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="170.0">
+                  <children>
+                    <Button id="" mnemonicParsing="false" onAction="#buyGoodsAction" prefHeight="56.0" prefWidth="93.0" text="购买" textOverrun="CLIP" />
+                    <Button mnemonicParsing="false" onAction="#addGoodsOrderAction" prefHeight="56.0" prefWidth="93.0" text="加入购物车" textOverrun="CLIP" />
+                  </children>
+                </VBox>
+                <VBox alignment="CENTER" prefHeight="169.0" prefWidth="244.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="567.5">
+                  <children>
+                    <HBox alignment="CENTER_RIGHT" prefHeight="51.0" prefWidth="223.0" spacing="5.0">
+                      <children>
+                        <Label alignment="CENTER_RIGHT" styleClass="labelX" text="预计花费" />
+                        <TextField fx:id="sumPriceField" editable="false" prefWidth="106.0" text="0" />
+                      </children>
+                    </HBox>
+                    <HBox alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="223.0" spacing="5.0">
+                      <children>
+                        <Label alignment="CENTER_RIGHT" styleClass="labelX" text="优惠" />
+                        <TextField fx:id="haveCutField" prefWidth="106.0" text="0" />
+                      </children>
+                    </HBox>
+                    <HBox alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="234.0001220703125" spacing="5.0">
+                      <children>
+                        <Label alignment="CENTER_RIGHT" styleClass="labelX" text="最终价格" />
+                        <TextField id="fi" fx:id="changeFundField" editable="false" prefHeight="31.0" prefWidth="106.0" text="0" />
+                      </children>
+                    </HBox>
+                    <HBox id="HBox" alignment="CENTER_RIGHT" spacing="5.0">
+                      <children>
+                        <Button mnemonicParsing="false" onAction="#checkOutAction" text="立即结算" />
+                      </children>
+                    </HBox>
+                  </children>
+                </VBox>
+              </children>
+            </AnchorPane>
+          </children>
+        </VBox>
+      </bottom>
+      <center>
+        <SplitPane dividerPositions="0.5011494252873563" focusTraversable="true" prefHeight="160.0" prefWidth="200.0">
+          <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+              <children>
+                <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <center>
+                    <TableView fx:id="goodsTable" prefHeight="200.0" prefWidth="200.0">
+                      <columns>
+                        <TableColumn fx:id="goodsIdCol" prefWidth="75.0" text="id" />
+                        <TableColumn fx:id="sellerIdCol" prefWidth="75.0" style="" text="商家id" />
+                        <TableColumn fx:id="goodsNameCol" prefWidth="136.2000274658203" text="名称" />
+                        <TableColumn fx:id="goodsPriceCol" maxWidth="200.0" prefWidth="145.5999694824219" style="" text="价格" />
+                      </columns>
+                    </TableView>
+                  </center>
+                  <top>
+                    <AnchorPane prefHeight="45.0" prefWidth="299.0" styleClass="background">
+                      <children>
+                        <Label prefHeight="37.0" styleClass="labelX" text="商品列表" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="3.0" />
+                        <AnchorPane id="AnchorPane" layoutY="5.0" minWidth="204.0" prefHeight="36.0" prefWidth="204.0" AnchorPane.leftAnchor="67.0">
+                          <children>
+                            <TextField fx:id="searchField" onAction="#searchAction" prefHeight="24.0" prefWidth="186.0" promptText="搜索" styleClass="search-box" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="9.0" AnchorPane.topAnchor="6.0">
+<!--                              <stylesheets>-->
+<!--                                <URL value="@SearchBox.css" />-->
+<!--                              </stylesheets>-->
+                            </TextField>
+                            <Button fx:id="clearButton" minHeight="9.9998779296875" minWidth="9.0" mnemonicParsing="false" onAction="#clearAction" prefHeight="12.0" prefWidth="12.0" styleClass="search-box" visible="false" AnchorPane.bottomAnchor="11.5" AnchorPane.leftAnchor="178.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="11.5">
+<!--                              <stylesheets>-->
+<!--                                <URL value="@SearchBox.css" />-->
+<!--                              </stylesheets>-->
+                            </Button>
+                          </children>
+                        </AnchorPane>
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#searchAction" prefHeight="27.0" prefWidth="84.0" text="搜索商品" textOverrun="CLIP" AnchorPane.leftAnchor="271.0" AnchorPane.topAnchor="9.0" />
+                      </children>
+                    </AnchorPane>
+                  </top>
+                </BorderPane>
+              </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+              <children>
+                <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <center>
+                    <TableView fx:id="shopCarTable" prefHeight="200.0" prefWidth="200.0">
+                      <columns>
+                        <TableColumn fx:id="shopCarIdCol" prefWidth="75.0" text="编号" />
+                        <TableColumn fx:id="shopCarNameCol" prefWidth="75.0" text="名称" />
+                        <TableColumn fx:id="shopCarNumCol" prefWidth="75.0" text="数量" />
+                        <TableColumn fx:id="shopCarPriceCol" prefWidth="75.0" text="价格" />
+<!--                        <TableColumn fx:id="amountCol" prefWidth="128.80002441406248" text="加入时价格" />-->
+                      </columns>
+                    </TableView>
+                  </center>
+                  <top>
+                    <AnchorPane prefHeight="45.0" prefWidth="473.0" styleClass="background">
+                      <children>
+                        <Label styleClass="labelX" text="我的购物车" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="3.0" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#clearAllOrderAction" prefHeight="27.0" prefWidth="85.0" text="清空购物车" textOverrun="CLIP" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="8.0" />
+                      </children>
+                    </AnchorPane>
+                  </top>
+                </BorderPane>
+              </children>
+            </AnchorPane>
+          </items>
+        </SplitPane>
+      </center>
+      <left>
+        <AnchorPane prefHeight="459.0" prefWidth="14.0" />
+      </left>
+      <right>
+        <AnchorPane prefHeight="459.0" prefWidth="14.0" />
+      </right>
+      <top>
+        <AnchorPane prefHeight="43.0" prefWidth="850.0">
+          <children>
+            <Label fx:id="messageLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="301.0" layoutY="12.0" prefWidth="247.0" styleClass="labelX, waring-label" />
+          </children>
+        </AnchorPane>
+      </top>
+    </BorderPane>
+  </children>
+</AnchorPane>
