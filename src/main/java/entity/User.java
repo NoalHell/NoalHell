@@ -9,6 +9,8 @@ import java.sql.Date;
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(insertable = false, columnDefinition = "DATETIME DEFAULT NOW()")
+//    private Date createTime;
     private int id;
     @Column(name="username", unique = true, nullable = false, length = 20)
     private String username;

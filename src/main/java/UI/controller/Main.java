@@ -8,8 +8,6 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.InputStream;
@@ -33,16 +31,16 @@ public class Main extends Application {
         primaryStage.setTitle("login");
         primaryStage.setScene(new Scene(root, StaticResourcesConfig.STAGE_WIDTH, StaticResourcesConfig.STAGE_HEIGHT));
         primaryStage.show();
+//        toHome();
     }
     public static void main(String[] args) {
         launch(args);
     }
 
     public void toHome(){
-
         try{
-            HomeController homeController = (HomeController) replaceSceneContent("/fxml/sample.fxml");
-            homeController.setMain(this);
+            HomeController indexController = (HomeController) replaceSceneContent("/fxml/home.fxml");
+            indexController.setMain(this);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -55,7 +53,7 @@ public class Main extends Application {
         loader.setBuilderFactory(new JavaFXBuilderFactory());
         loader.setLocation(Main.class.getResource(fxml));
         try {
-            BorderPane page = (BorderPane) loader.load(in);
+            AnchorPane page = (AnchorPane) loader.load(in);
             Scene scene = new Scene(page, StaticResourcesConfig.STAGE_WIDTH, StaticResourcesConfig.STAGE_HEIGHT);
             stage.setScene(scene);
             stage.sizeToScene();

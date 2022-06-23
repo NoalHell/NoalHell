@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="654.9999000000025" prefWidth="899.5" styleClass="background" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controller.indexController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="654.9999000000025" prefWidth="899.5" styleClass="background" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controller.HomeController">
   <children>
     <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <bottom>
@@ -83,12 +83,12 @@
               <children>
                 <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <center>
-                    <TableView fx:id="dealTable" prefHeight="200.0" prefWidth="200.0">
+                    <TableView fx:id="goodsTable" prefHeight="200.0" prefWidth="200.0">
                       <columns>
-                        <TableColumn fx:id="dealIdCol" prefWidth="75.0" text="id" />
-                        <TableColumn fx:id="tableNoCol" prefWidth="75.0" style="" text="商家id" />
-                        <TableColumn fx:id="sumPriceCol" prefWidth="136.2000274658203" text="名称" />
-                        <TableColumn fx:id="timeCol" maxWidth="200.0" prefWidth="145.5999694824219" style="" text="价格" />
+                        <TableColumn fx:id="goodsIdCol" prefWidth="75.0" text="id" />
+                        <TableColumn fx:id="sellerIdCol" prefWidth="75.0" style="" text="商家id" />
+                        <TableColumn fx:id="goodsNameCol" prefWidth="136.2000274658203" text="名称" />
+                        <TableColumn fx:id="goodsPriceCol" maxWidth="200.0" prefWidth="145.5999694824219" style="" text="价格" />
                       </columns>
                     </TableView>
                   </center>
@@ -110,7 +110,7 @@
                             </Button>
                           </children>
                         </AnchorPane>
-                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#deleteGoodsAction" prefHeight="27.0" prefWidth="84.0" text="搜索商品" textOverrun="CLIP" AnchorPane.leftAnchor="271.0" AnchorPane.topAnchor="9.0" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#searchAction" prefHeight="27.0" prefWidth="84.0" text="搜索商品" textOverrun="CLIP" AnchorPane.leftAnchor="271.0" AnchorPane.topAnchor="9.0" />
                       </children>
                     </AnchorPane>
                   </top>
@@ -121,13 +121,13 @@
               <children>
                 <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <center>
-                    <TableView fx:id="dealDetailTable" prefHeight="200.0" prefWidth="200.0">
+                    <TableView fx:id="shopCarTable" prefHeight="200.0" prefWidth="200.0">
                       <columns>
-                        <TableColumn fx:id="foodIdCol" prefWidth="75.0" text="编号" />
-                        <TableColumn fx:id="foodNameCol" prefWidth="75.0" text="名称" />
-                        <TableColumn fx:id="foodTypeCol" prefWidth="75.0" text="数量" />
-                        <TableColumn fx:id="foodPriceCol" prefWidth="75.0" text="价格" />
-                        <TableColumn fx:id="amountCol" prefWidth="128.80002441406248" text="加入时价格" />
+                        <TableColumn fx:id="shopCarIdCol" prefWidth="75.0" text="编号" />
+                        <TableColumn fx:id="shopCarNameCol" prefWidth="75.0" text="名称" />
+                        <TableColumn fx:id="shopCarNumCol" prefWidth="75.0" text="数量" />
+                        <TableColumn fx:id="shopCarPriceCol" prefWidth="75.0" text="价格" />
+<!--                        <TableColumn fx:id="amountCol" prefWidth="128.80002441406248" text="加入时价格" />-->
                       </columns>
                     </TableView>
                   </center>

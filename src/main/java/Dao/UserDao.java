@@ -12,48 +12,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDao{
-
-    public void Insert(User user) {
-        //1.获取事务对象
-        EntityManager entityManager = JpaUtil.getEntityManager();
-        EntityTransaction transaction = entityManager.getTransaction();
-
-        //2.开启事务
-        transaction.begin();
-        //3.添加操作
-        entityManager.persist(user);
-        //4.提交事务·
-        transaction.commit();
-        //5.关闭资源
-        entityManager.close();
+    EntityManager entityManager;
+    public UserDao(){
+        this.entityManager = JpaUtil.getEntityManager();
     }
 
-    public void update(User user) {
-        //1. 获取实体类管理器
-        EntityManager entityManager = JpaUtil.getEntityManager();
-        //获取事务
-        EntityTransaction transaction = entityManager.getTransaction();
-        //开启事务
-        transaction.begin();
+    public void Insert(User user) {
+        entityManager.persist(user);
+    }
+
+    public User update(User user) {
         //查询出来需要修改的数据
         User e = entityManager.find(User.class, user.getId());
         //修改数据
         User merge = entityManager.merge(e);
         System.out.println("数据修改成功后数据" + merge);
-        //  提交事务
-        transaction.commit();
-        //关闭链接
-        entityManager.close();
-
-    }
-    public User selectEmployeeById(int id){
-        EntityManager entityManager = JpaUtil.getEntityManager();
-        EntityTransaction transaction = entityManager.getTransaction();
-        transaction.begin();
-        //查询id=5的顾客
-        User user = entityManager.find(User.class, id);
-        System.out.println(user);
-        return user;
+        return merge;
     }
 
     public User getByUserName(String username){
@@ -79,28 +53,14 @@ public class UserDao{
         return user;
     }
 
-    public ArrayList<User> getList(){
-        EntityManager entityManager = JpaUtil.getEntityManager();
-        EntityTransaction transaction = entityManager.getTransaction();
-        transaction.begin();
-        //查询id=5的顾客
-        Query query = entityManager.createNativeQuery("select * from myUser");
-        List rows = query.getResultList();
-        ArrayList<User> users = new ArrayList<>();
-        if(rows.size()!=0){
-            for(Object row:rows){
-                Object[] cells = (Object[]) row;
-                User user =new User();
-                user.setId((Integer) cells[0]);
-                user.setBirthday((Date)  cells[1]);
-                user.setEmail((String) cells[2]);
-                user.setPassword((String) cells[3]);
-                user.setSex((Boolean) cells[4]);
-                user.setUsername((String) cells[5]);
-                users.add(user);
-            }
+    public User findByName(String name) {
+        Query query = entityManager.createQuery("select u from User u where u.username = ?1", User.class);
+        query.setParameter(1, name);
+        return (User) query.getSingleResult();
+    }
 
-        }
-        return users;
+    public ArrayList<User> findAll() {
+        Query query = entityManager.createQuery("select u from User u", User.class);
+        return (ArrayList<User>) query.getResultList();
     }
 }

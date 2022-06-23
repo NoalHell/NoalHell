@@ -35,6 +35,8 @@ public class Goods implements Serializable {
         this.id = id;
     }
 
+    public Goods(){}
+
     public Goods(String name, Double price, Date postTime, String produceLocation,Date produceTime, Date keepTime){
         this.name = name;
         this.price = price;
@@ -74,6 +76,34 @@ public class Goods implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public void setKeepTime(Date keepTime) {
+        this.keepTime = keepTime;
+    }
+
+    public void setPostTime(Date postTime) {
+        this.postTime = postTime;
+    }
+
+    public void setProduceLocation(String produceLocation) {
+        this.produceLocation = produceLocation;
+    }
+
+    public void setProduceTime(Date produceTime) {
+        this.produceTime = produceTime;
+    }
+
+    public void setSellId(int sellId) {
+        this.sellId = sellId;
     }
 
     @Override
