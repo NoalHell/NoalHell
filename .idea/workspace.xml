@@ -198,7 +198,7 @@
       <workItem from="1655007952477" duration="24243000" />
       <workItem from="1655083605667" duration="46000" />
       <workItem from="1655083668363" duration="12760000" />
-      <workItem from="1655855790529" duration="14604000" />
+      <workItem from="1655855790529" duration="14925000" />
     </task>
     <task id="LOCAL-00001" summary="day 3:&#10;设计主页界面，并完善相关实体&#10;解决部分错误">
       <created>1655870920765</created>
@@ -221,7 +221,42 @@
       <option name="project" value="LOCAL" />
       <updated>1655942098779</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="day 3:&#10;设计主页界面，并完善相关实体&#10;解决部分错误">
+      <created>1655943056159</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1655943056159</updated>
+    </task>
+    <task id="LOCAL-00005" summary="day 3:&#10;设计主页界面，并完善相关实体&#10;解决部分错误">
+      <created>1655943143801</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1655943143801</updated>
+    </task>
+    <task id="LOCAL-00006" summary="day 3:&#10;设计主页界面，并完善相关实体&#10;解决部分错误">
+      <created>1655943196205</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655943196205</updated>
+    </task>
+    <task id="LOCAL-00007" summary="day 3:&#10;设计主页界面，并完善相关实体&#10;解决部分错误">
+      <created>1655943260656</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1655943260656</updated>
+    </task>
+    <task id="LOCAL-00008" summary="day 3:&#10;设计主页界面，并完善相关实体&#10;解决部分错误">
+      <created>1655943302823</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1655943302823</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,10 +297,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="614" y="354" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.864@0.0.1536.864" timestamp="1655855813291" />
-    <state x="335" y="71" width="1046" height="638" key="CommitChangelistDialog2" timestamp="1655943195264">
+    <state x="335" y="71" width="1046" height="638" key="CommitChangelistDialog2" timestamp="1655943363332">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="335" y="71" width="1046" height="638" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1655943195264" />
+    <state x="335" y="71" width="1046" height="638" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1655943363332" />
     <state x="664" y="211" key="FileChooserDialogImpl" timestamp="1655865714356">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -325,6 +360,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="364" y="152" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1655871003292" />
+    <state x="526" y="153" key="VcsDiffUtil.ChangesDialog" timestamp="1655943348343">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="526" y="153" key="VcsDiffUtil.ChangesDialog/0.0.1536.864@0.0.1536.864" timestamp="1655943348343" />
     <state x="604" y="269" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1655024937776">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
