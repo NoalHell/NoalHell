@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1cc2306a-c4f6-4611-96d2-a1632aa07ffb" name="Default Changelist" comment="day 3:&#10;设计主页界面，并完善相关实体&#10;解决部分错误">
+    <list default="true" id="1cc2306a-c4f6-4611-96d2-a1632aa07ffb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -193,7 +193,7 @@
       <workItem from="1655007952477" duration="24243000" />
       <workItem from="1655083605667" duration="46000" />
       <workItem from="1655083668363" duration="12760000" />
-      <workItem from="1655855790529" duration="13507000" />
+      <workItem from="1655855790529" duration="14604000" />
     </task>
     <task id="LOCAL-00001" summary="day 3:&#10;设计主页界面，并完善相关实体&#10;解决部分错误">
       <created>1655870920765</created>
@@ -202,7 +202,21 @@
       <option name="project" value="LOCAL" />
       <updated>1655870920765</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="day 3:&#10;设计主页界面，并完善相关实体&#10;解决部分错误">
+      <created>1655941946669</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1655941946669</updated>
+    </task>
+    <task id="LOCAL-00003" summary="day 3:&#10;设计主页界面，并完善相关实体&#10;解决部分错误">
+      <created>1655942098778</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1655942098779</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,10 +257,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="614" y="354" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.864@0.0.1536.864" timestamp="1655855813291" />
-    <state x="335" y="71" width="1046" height="638" key="CommitChangelistDialog2" timestamp="1655942051625">
+    <state x="335" y="71" width="1046" height="638" key="CommitChangelistDialog2" timestamp="1655942097816">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="335" y="71" width="1046" height="638" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1655942051625" />
+    <state x="335" y="71" width="1046" height="638" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1655942097816" />
     <state x="664" y="211" key="FileChooserDialogImpl" timestamp="1655865714356">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
