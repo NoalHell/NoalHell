@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="654.9999000000025" prefWidth="899.5" styleClass="background" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controller.HomeController">
   <children>
-    <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
       <bottom>
         <VBox prefHeight="206.0" prefWidth="792.0">
           <children>
@@ -61,7 +60,7 @@
                     <HBox alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="234.0001220703125" spacing="5.0">
                       <children>
                         <Label alignment="CENTER_RIGHT" styleClass="labelX" text="最终价格" />
-                        <TextField id="fi" fx:id="changeFundField" editable="false" prefHeight="31.0" prefWidth="106.0" text="0" />
+                        <TextField id="fi" fx:id="finalCostField" editable="false" prefHeight="31.0" prefWidth="106.0" text="0" />
                       </children>
                     </HBox>
                     <HBox id="HBox" alignment="CENTER_RIGHT" spacing="5.0">
@@ -154,10 +153,19 @@
       <top>
         <AnchorPane prefHeight="43.0" prefWidth="850.0">
           <children>
-            <Label fx:id="messageLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="301.0" layoutY="12.0" prefWidth="247.0" styleClass="labelX, waring-label" />
+            <Label fx:id="messageLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="301.0" layoutY="12.0" prefWidth="247.0" styleClass="labelX, waring-label" text="noal" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
           </children>
         </AnchorPane>
       </top>
     </BorderPane>
+      <HBox prefHeight="100.0" prefWidth="200.0" />
+      <ToolBar prefHeight="20.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <items>
+          <Button mnemonicParsing="false" text="个人中心"/>
+        </items>
+          <items>
+              <Button onAction="#logout" mnemonicParsing="false" text="退出登录"/>
+          </items>
+      </ToolBar>
   </children>
 </AnchorPane>

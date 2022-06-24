@@ -22,15 +22,17 @@ import javax.persistence.NoResultException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class HomeController implements Initializable {
 
     Main main;
     @FXML
-    TextField sumPriceField; // 总价框
+    TextField sumPriceField; // 预计花费
     @FXML
     TextField haveCutField; // 优惠框
-
+    @FXML
+    TextField finalCostField; // 最终花费
 
     // goods table
     ObservableList<Goods> goodsSource=  FXCollections.observableArrayList();
@@ -113,7 +115,7 @@ public class HomeController implements Initializable {
         shopCarIdCol.setCellValueFactory(new PropertyValueFactory<ShopCar,Integer>("id"));
         shopCarNumCol.setCellValueFactory(new PropertyValueFactory<ShopCar,Integer>("num"));
         shopCarNameCol.setCellValueFactory(new PropertyValueFactory<ShopCar,String>("name"));
-//        shopCarPriceCol.setCellValueFactory(new PropertyValueFactory<ShopCar,Double>("price"));
+        shopCarPriceCol.setCellValueFactory(new PropertyValueFactory<ShopCar,Double>("price"));
     }
 
     // buy
@@ -136,12 +138,16 @@ public class HomeController implements Initializable {
             if(had == null) {
                 ShopCar save = new ShopCar();
                 save.setGoodsId(selectGoodsItem.getId());
+                save.setUserId(main.getUser().getId());
                 save.setNum(1);
+                save.setPrice(selectGoodsItem.getPrice());
                 shopCarDao.Insert(save);
+                notifyCarListChange(save);
             } else {
                 int num = had.getNum() +1;
                 had.setNum(num);
                 shopCarDao.update(had);
+                notifyCarListChange(had);
             }
         }
         catch (Exception e){
@@ -167,6 +173,22 @@ public class HomeController implements Initializable {
 
     // 清空购物车
     public void clearAllOrderAction(ActionEvent actionEvent) {
+        if(shopCarSource.size()==0){
+            System.out.println("还没有添加");
+            return;
+        }
+        try {
+            ShopCarDao shopCarDao = new ShopCarDao();
+            for(ShopCar s:shopCarSource){
+                shopCarDao.delete(s);
+            }
+            shopCarSource = FXCollections.observableArrayList();
+            Platform.runLater(()->{
+                shopCarTable.setItems(shopCarSource);
+            });
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void getGoodsData(){
@@ -183,7 +205,7 @@ public class HomeController implements Initializable {
 
     public void getCarData(){
         ShopCarDao shopCarDao = new ShopCarDao();
-        ArrayList<ShopCar> shopCars = shopCarDao.findAll();
+        ArrayList<ShopCar> shopCars = shopCarDao.findMyAll(main.getUser().getId());
         shopCarSource = FXCollections.observableArrayList();
         for(ShopCar s:shopCars){
             shopCarSource.add(s);
@@ -191,6 +213,26 @@ public class HomeController implements Initializable {
         Platform.runLater(()->{
             shopCarTable.setItems(shopCarSource);
         });
+    }
+
+    private void notifyCarListChange(ShopCar shopCar){
+        shopCarSource.removeIf(new Predicate<ShopCar>() {
+            @Override
+            public boolean test(ShopCar s) {
+                if(s.getId()== shopCar.getId()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+        shopCarSource.add(shopCar);
+        double sum = 0.0;
+        for(ShopCar e: shopCarSource){
+            sum+= e.getPrice()*e.getNum();
+        }
+        sumPriceField.setText(sum+"元");
+
     }
 
     @Override
@@ -205,5 +247,9 @@ public class HomeController implements Initializable {
                 getCarData();
             }
         }.start();
+    }
+
+    public void logout(ActionEvent actionEvent) {
+        main.toLogin();
     }
 }
