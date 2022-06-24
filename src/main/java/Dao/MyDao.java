@@ -8,7 +8,7 @@ import javax.persistence.EntityTransaction;
 import java.io.Serializable;
 
 public class MyDao {
-    public static<E extends Serializable> void insert(E data){
+    public <E extends Serializable> void insert(E data){
         //1.获取事务对象
         EntityManager entityManager = JpaUtil.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
@@ -22,21 +22,20 @@ public class MyDao {
         entityManager.close();
     }
 
-    public static<E extends Serializable> void Update(E data){
+    public <E extends Serializable> E update(E data){
         //1. 获取实体类管理器
         EntityManager entityManager = JpaUtil.getEntityManager();
         //获取事务
         EntityTransaction transaction = entityManager.getTransaction();
         //开启事务
         transaction.begin();
-        //查询出来需要修改的数据
-        E e = (E) entityManager.find(data.getClass(), data);
         //修改数据
-        E merge = entityManager.merge(e);
+        E merge = entityManager.merge(data);
         System.out.println("数据修改成功后数据" + merge);
         //  提交事务
         transaction.commit();
         //关闭链接
         entityManager.close();
+        return  merge;
     }
 }

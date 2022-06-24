@@ -1,21 +1,23 @@
 package UI.controller;
 
 import config.StaticResourcesConfig;
+import entity.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.InputStream;
 import java.net.URL;
 
 public class Main extends Application {
-
-    Stage stage;
+    private User user;
+    private Stage stage;
     @Override
     public void start(Stage primaryStage) throws Exception{
         this.stage = primaryStage;
@@ -27,9 +29,12 @@ public class Main extends Application {
 
         LoginController loginController = fxmlLoader.getController();
         loginController.setMain(this);
-
         primaryStage.setTitle("login");
-        primaryStage.setScene(new Scene(root, StaticResourcesConfig.STAGE_WIDTH, StaticResourcesConfig.STAGE_HEIGHT));
+
+        Scene scene = new Scene(root, StaticResourcesConfig.STAGE_WIDTH, StaticResourcesConfig.STAGE_HEIGHT);
+
+        scene.getStylesheets().add(getClass().getResource("/css/login.css").toExternalForm());
+        primaryStage.setScene(scene);
         primaryStage.show();
 //        toHome();
     }
@@ -40,7 +45,18 @@ public class Main extends Application {
     public void toHome(){
         try{
             HomeController indexController = (HomeController) replaceSceneContent("/fxml/home.fxml");
+            this.getStage().setTitle("首页");
             indexController.setMain(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void toLogin(){
+        try{
+            LoginController loginController = (LoginController) replaceSceneContent("/fxml/Login.fxml");
+            this.getStage().setTitle("登录");
+            loginController.setMain(this);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -68,5 +84,13 @@ public class Main extends Application {
 
     public Stage getStage() {
         return stage;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

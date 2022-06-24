@@ -10,44 +10,66 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShopCarDao {
+public class ShopCarDao extends MyDao{
+
     EntityManager entityManager;
     public ShopCarDao(){
         this.entityManager = JpaUtil.getEntityManager();
     }
 
-    public void Insert(ShopCar shopCar) {
-        //1.获取事务对象
-        EntityManager entityManager = JpaUtil.getEntityManager();
-        EntityTransaction transaction = entityManager.getTransaction();
-        //2.开启事务
-        transaction.begin();
-        //3.添加操作
-        entityManager.persist(shopCar);
-        //4.提交事务·
-        transaction.commit();
-        //5.关闭资源
-        entityManager.close();
+    public void delete(ShopCar shopCar){
+        shopCar.setDeleted(1);
+        this.update(shopCar);
+//        //1. 获取实体类管理器
+//        EntityManager entityManager = JpaUtil.getEntityManager();
+//        //获取事务
+//        EntityTransaction transaction = entityManager.getTransaction();
+//        //开启事务
+//        transaction.begin();
+//        //查询出来需要修改的数据
+//        //修改数据
+//        shopCar.setDeleted(1);
+//        ShopCar merge = entityManager.merge(shopCar);
+//        System.out.println("数据修改成功后数据" + merge);
+//        //  提交事务
+//        transaction.commit();
+//        //关闭链接
+//        entityManager.close();
+    }
 
+    public void Insert(ShopCar shopCar) {
+        this.insert(shopCar);
+//        //1.获取事务对象
+//        EntityManager entityManager = JpaUtil.getEntityManager();
+//        EntityTransaction transaction = entityManager.getTransaction();
+//        //2.开启事务
+//        transaction.begin();
+//        //3.添加操作
+//        entityManager.persist(shopCar);
+//        //4.提交事务·
+//        transaction.commit();
+//        //5.关闭资源
+//        entityManager.close();
     }
 
     public ShopCar update(ShopCar shopCar) {
+        return super.update(shopCar);
         //1. 获取实体类管理器
-        EntityManager entityManager = JpaUtil.getEntityManager();
-        //获取事务
-        EntityTransaction transaction = entityManager.getTransaction();
-        //开启事务
-        transaction.begin();
-        //查询出来需要修改的数据
-        //修改数据
-        ShopCar merge = entityManager.merge(shopCar);
-        System.out.println("数据修改成功后数据" + merge);
-        //  提交事务
-        transaction.commit();
-        //关闭链接
-        entityManager.close();
-        //查询出来需要修改的数据
-        return merge;
+//        EntityManager entityManager = JpaUtil.getEntityManager();
+//        //获取事务
+//        EntityTransaction transaction = entityManager.getTransaction();
+//        //开启事务
+//        transaction.begin();
+//        //查询出来需要修改的数据
+//        //修改数据
+//        ShopCar merge = entityManager.merge(shopCar);
+//        System.out.println("数据修改成功后数据" + merge);
+//        //  提交事务
+//        transaction.commit();
+//        //关闭链接
+//        entityManager.close();
+//        //查询出来需要修改的数据
+//        return merge;
     }
 
     public ShopCar findByGoodsId(int id) {
@@ -66,4 +88,12 @@ public class ShopCarDao {
         Query query = entityManager.createQuery("select u from ShopCar u", ShopCar.class);
         return (ArrayList<ShopCar>) query.getResultList();
     }
+
+    public ArrayList<ShopCar> findMyAll(int id) {
+        Query query = entityManager.createQuery("select s from ShopCar s where s.userId=?1", ShopCar.class);
+        query.setParameter(1, id);
+        return (ArrayList<ShopCar>) query.getResultList();
+    }
+
 }
+

@@ -5,9 +5,14 @@ import entity.User;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
-public class LoginController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+
+public class LoginController implements Initializable {
 //    private final static Logger log = Logger.getLogger(Controller.class);
     private Main main;
     @FXML
@@ -43,6 +48,8 @@ public class LoginController {
                             if(user.getPassword().equals(password)){
                                 msg = "登录成功";
                                 isLogin = true;
+                                // 全局变量
+                                main.setUser(user);
                             } else {
                                 msg = "用户名或密码错误";
                             }
@@ -123,4 +130,8 @@ public class LoginController {
         this.main = main;
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 }
