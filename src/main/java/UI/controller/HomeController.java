@@ -17,6 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import javax.persistence.NoResultException;
 import java.net.URL;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
-public class HomeController implements Initializable {
+public class HomeController extends ViewHelper implements Initializable {
 
     Main main;
     @FXML
@@ -124,7 +125,7 @@ public class HomeController implements Initializable {
     // order
     public void addGoodsOrderAction(ActionEvent actionEvent) {
         if(selectGoodsItem==null){
-            System.out.println("还没有选择添加的商品");
+            toast("还没有选择添加的商品", 1000);
             return;
         }
         ShopCarDao shopCarDao = new ShopCarDao();
@@ -157,8 +158,15 @@ public class HomeController implements Initializable {
     //check out
     public void checkOutAction(ActionEvent actionEvent) {
     }
+    @FXML
+    TextField searchField;
     // 搜索
     public void searchAction(ActionEvent actionEvent) {
+        String search = searchField.getText();
+        if(search.equals("")){
+            toast("请输入需要搜索的商品名称", 1000);
+            return;
+        }
         new Thread(){
             @Override
             public void run() {
@@ -174,7 +182,7 @@ public class HomeController implements Initializable {
     // 清空购物车
     public void clearAllOrderAction(ActionEvent actionEvent) {
         if(shopCarSource.size()==0){
-            System.out.println("还没有添加");
+            toast("还没有添加", 1000);
             return;
         }
         try {
@@ -189,6 +197,18 @@ public class HomeController implements Initializable {
         } catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public void getGoodsDataByName(String name){
+        GoodsDao goodsDao = new GoodsDao();
+        ArrayList<Goods> goods = goodsDao.findByName(name);
+        goodsSource = FXCollections.observableArrayList();
+        for(Goods g:goods){
+            goodsSource.add(g);
+        }
+        Platform.runLater(()->{
+            goodsTable.setItems(goodsSource);
+        });
     }
 
     public void getGoodsData(){
@@ -251,5 +271,29 @@ public class HomeController implements Initializable {
 
     public void logout(ActionEvent actionEvent) {
         main.toLogin();
+    }
+
+    public void changePassword(ActionEvent actionEvent) {
+//        Stage secondaryStage=new Stage();
+//        Button btn1=new Button();
+//        StackPane root1=new StackPane();
+//        btn1.setText("欢迎来到第二舞台");
+//
+//        btn1.setOnAction(new EventHandler<ActionEvent>(){
+//            @Override
+//            public void handle(ActionEvent event) {
+//                System.out.println("欢迎来到第二舞台");
+//            }
+//        });
+//
+//        root1.getChildren().add(btn1);
+//        Scene secondaryScene=new Scene(root1,500,250);
+//        secondaryStage.setScene(secondaryScene);
+//        secondaryStage.setTitle("第二舞台");
+//        secondaryStage.show();
+    }
+
+    public void toMyCenterAction(ActionEvent actionEvent) {
+        main.toMyCenter();
     }
 }

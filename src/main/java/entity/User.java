@@ -1,11 +1,19 @@
 package entity;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 
 @Entity     //声明实体类
 @Table(name = "myUser")    //建立实体类和表的映射关系
+
+//逻辑删除注解，删除sql变成了update
+@SQLDelete(sql = "update myUser set deleted = 1 where id = ?")
+//where条件带上了逻辑删除条件
+@Where(clause = "deleted = 0")
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +35,16 @@ public class User implements Serializable {
     @Column(name="email", length = 20)
     private String email;
 
+    //逻辑删除（0 未删除、1 删除）
+    private Integer deleted = 0;
+
     //set
+
+
+    public void setDeleted(Integer deleted) {
+        this.deleted = deleted;
+    }
+
     public void setId(int id) {
         this.id = id;
     }

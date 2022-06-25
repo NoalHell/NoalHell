@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/myOrder.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controller.MyCenterController">
+    <BorderPane styleClass="green-theme" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <top>
+            <AnchorPane prefHeight="80.0">
+                <Label onMouseClicked="#listDefault" styleClass="font-gray" text="我的中心" AnchorPane.leftAnchor="10" AnchorPane.topAnchor="20">
+                    <effect>
+                        <Reflection bottomOpacity="0.2" fraction="0.5" topOffset="-5.0" />
+                    </effect>
+                    <font>
+                        <Font name="System Bold" size="26.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="60.0" fitWidth="64.0" layoutX="874.0" layoutY="7.0" AnchorPane.rightAnchor="118.0" AnchorPane.topAnchor="7.0"
+                fx:id="myAvatar">
+<!--                    <Image url="/img/me.png"/>-->
+                </ImageView>
+                <Button styleClass="btn-radius-large,blue-theme" text="back" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20" onAction="#back" />
+            </AnchorPane>
+        </top>
+        <center>
+            <SplitPane dividerPositions="0.19602272727272727">
+                <AnchorPane minWidth="200" styleClass="dark-gray-theme">
+                    <Accordion AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <panes>
+                            <TitledPane alignment="TOP_LEFT" text="个人信息">
+                                <VBox minHeight="100" spacing="10" styleClass="dark-theme">
+                                    <Button styleClass="menu-btn" text="修改个人信息" />
+                                </VBox>
+                            </TitledPane>
+                            <TitledPane alignment="TOP_LEFT" text="地址管理">
+                                <VBox minHeight="100" spacing="10" styleClass="dark-theme">
+                                    <Button onAction="#changePassword" styleClass="menu-btn" text="添加地址" />
+                                </VBox>
+                            </TitledPane>
+                            <TitledPane alignment="TOP_LEFT" text="订单管理">
+                                <VBox minHeight="100" spacing="10" styleClass="dark-theme">
+                                    <Button onAction="#changePassword" styleClass="menu-btn" text="我的订单" />
+                                </VBox>
+                            </TitledPane>
+                            <TitledPane alignment="TOP_LEFT" text="安全">
+                                <VBox minHeight="100" spacing="10" styleClass="dark-theme">
+                                    <Button onAction="#changePassword" styleClass="menu-btn" text="修改密码" />
+                                </VBox>
+                            </TitledPane>
+                            <TitledPane alignment="TOP_LEFT" text="设置">
+                                <VBox minHeight="100" spacing="10" styleClass="dark-theme">
+                                    <Button onAction="#changePassword" styleClass="menu-btn" text="基础设置" />
+                                </VBox>
+                            </TitledPane>
+                        </panes>
+                    </Accordion>
+                </AnchorPane>
+
+                <!--中间内容面板-->
+                <StackPane fx:id="mainContainer" minWidth="724.0" prefHeight="614.0" prefWidth="724.0" styleClass="default-theme">
+                    <padding>
+                        <Insets bottom="5" left="30" right="10" top="10" />
+                    </padding>
+                </StackPane>
+            </SplitPane>
+        </center>
+    </BorderPane>
+</AnchorPane>

@@ -62,6 +62,16 @@ public class Main extends Application {
         }
     }
 
+    public void toMyCenter(){
+        try{
+            MyCenterController myCenterController = (MyCenterController) replaceSceneContent("/fxml/MyCenter.fxml");
+            this.getStage().setTitle("个人中心");
+            myCenterController.setMain(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private Initializable replaceSceneContent(String fxml) throws Exception {
 
         FXMLLoader loader = new FXMLLoader();

@@ -158,13 +158,13 @@
         </AnchorPane>
       </top>
     </BorderPane>
-      <HBox prefHeight="100.0" prefWidth="200.0" />
       <ToolBar prefHeight="20.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <items>
-          <Button mnemonicParsing="false" text="个人中心"/>
+          <Button mnemonicParsing="false" text="个人中心" onAction="#toMyCenterAction"/>
+            <Button mnemonicParsing="false" text="修改密码" onAction="#changePassword" />
         </items>
           <items>
-              <Button onAction="#logout" mnemonicParsing="false" text="退出登录"/>
+              <Button mnemonicParsing="false" onAction="#logout" text="退出登录" />
           </items>
       </ToolBar>
   </children>

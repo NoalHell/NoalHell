@@ -6,13 +6,14 @@ import java.sql.Date;
 
 @Entity     //声明实体类
 @Table(name = "Goods")    //建立实体类和表的映射关系
+@IdClass(Goods.class)
 public class Goods implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name="name", unique = true, nullable = false, length = 20)
     private String name;
-
+    @Id
     @Column(name="sellId", nullable = false)
     private int sellId;
 
@@ -109,5 +110,16 @@ public class Goods implements Serializable {
     @Override
     public String toString() {
         return super.toString();
+    }
+
+    // 保证不同对象
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }

@@ -30,8 +30,16 @@ public class ShopCar  implements Serializable {
     private Integer deleted = 0;
 
 //    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-//    @JoinColumn(name="id")
+//    @JoinColumn(name="goodsId", referencedColumnName = "Goods.id")
 //    private Goods goods;
+//
+//    public void setGoods(Goods goods) {
+//        this.goods = goods;
+//    }
+//
+//    public Goods getGoods() {
+//        return goods;
+//    }
 
     @Column(name = "price")
     private double price;

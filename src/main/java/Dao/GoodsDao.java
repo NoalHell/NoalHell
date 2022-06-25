@@ -10,29 +10,24 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GoodsDao {
+public class GoodsDao extends MyDao{
     EntityManager entityManager;
     public GoodsDao(){
         this.entityManager = JpaUtil.getEntityManager();
     }
 
     public void Insert(Goods goods) {
-        entityManager.persist(goods);
+        insert(goods);
     }
 
     public Goods update(Goods goods) {
-        //查询出来需要修改的数据
-        Goods e = entityManager.find(Goods.class, goods.getId());
-        //修改数据
-        Goods merge = entityManager.merge(e);
-        System.out.println("数据修改成功后数据" + merge);
-        return merge;
+        return super.update(goods);
     }
 
-    public Goods findByName(String name) {
+    public ArrayList<Goods> findByName(String name) {
         Query query = entityManager.createQuery("select u from Goods u where u.name = ?1", Goods.class);
         query.setParameter(1, name);
-        return (Goods) query.getSingleResult();
+        return (ArrayList<Goods>) query.getResultList();
     }
 
     public ArrayList<Goods> findAll() {
