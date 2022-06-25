@@ -25,6 +25,20 @@ public class Order implements Serializable {
     @Column(name="remark")
     private String remark;
 
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinTable(name = "Order_ShopCar",
+            joinColumns = @JoinColumn(name="Order_id"),
+            inverseJoinColumns = @JoinColumn(name = "ShopCar_id"))//通过关联表保存一对一的关系
+    private ShopCar shopCar;
+
+    public void setShopCar(ShopCar shopCar) {
+        this.shopCar = shopCar;
+    }
+
+    public ShopCar getShopCar() {
+        return shopCar;
+    }
+
     public Order(){}
 
     public void setId(int id) {
@@ -74,6 +88,7 @@ public class Order implements Serializable {
     public String getRemark() {
         return remark;
     }
+
 
     @Override
     public String toString() {

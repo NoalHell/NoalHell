@@ -6,6 +6,8 @@ import org.hibernate.annotations.Where;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity     //声明实体类
 @Table(name = "myUser")    //建立实体类和表的映射关系
@@ -88,6 +90,20 @@ public class User implements Serializable {
 
     public String getUsername() {
         return username;
+    }
+
+    @OneToMany(mappedBy = "ownerUser",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    //级联保存、更新、删除、刷新;延迟加载。当删除用户，会级联删除该用户的所有文章
+    //拥有mappedBy注解的实体类为关系被维护端
+    //mappedBy="ownerUserId"中的ownerUserId是Address中的ownerUserId属性
+    private List<Address> addresses =new ArrayList<>();
+
+    public ArrayList<Address> getAddresses() {
+        return (ArrayList<Address>) addresses;
+    }
+
+    public void setAddresses(ArrayList<Address> addresses) {
+        this.addresses = addresses;
     }
 
     @Override

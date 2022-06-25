@@ -17,6 +17,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -98,25 +99,26 @@ public class LoginController extends ViewHelper implements Initializable {
                 @Override
                 public void run() {
                     super.run();
+                    String msg = "unknown";
                     try{
                         User user = new User();
                         user.setUsername(username);
                         user.setPassword(password);
                         UserDao userDao = new UserDao();
                         userDao.Insert(user);
-                        Platform.runLater(()->{
-                            showMessage("注册成功！");
-                        });
+                        msg = "注册成功！";
 
-                    } catch (RuntimeException e){
+                    } catch (PersistenceException e){
                         e.printStackTrace();
+                        msg = "注册失败";
+                    }catch (RuntimeException e){
+                        e.printStackTrace();
+                        msg = "运行失败";
+                    }
+                    finally {
+                        String finalMsg = msg;
                         Platform.runLater(()->{
-                            messageLabel.setText("注册失败");
-                            showMessage(e.toString());
-
-                        });
-                    } finally {
-                        Platform.runLater(()->{
+                            animateMessage(finalMsg, messageLabel);
                             hideLoading();
                         });
                     }

@@ -5,6 +5,8 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 @Entity     //声明实体类
 @Table(name = "ShopCar")    //建立实体类和表的映射关系
@@ -29,17 +31,19 @@ public class ShopCar  implements Serializable {
     //逻辑删除（0 未删除、1 删除）
     private Integer deleted = 0;
 
-//    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-//    @JoinColumn(name="goodsId", referencedColumnName = "Goods.id")
-//    private Goods goods;
-//
-//    public void setGoods(Goods goods) {
-//        this.goods = goods;
-//    }
-//
-//    public Goods getGoods() {
-//        return goods;
-//    }
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinTable(name = "ShopCar_goods",
+            joinColumns = @JoinColumn(name="ShopCar_id"),
+            inverseJoinColumns = @JoinColumn(name = "Goods_id"))//通过关联表保存一对一的关系
+     private Goods goods;
+
+    public void setGoods(Goods goods) {
+        this.goods = goods;
+    }
+
+    public Goods getGoods() {
+        return goods;
+    }
 
     @Column(name = "price")
     private double price;
