@@ -110,7 +110,7 @@ public class LoginController extends ViewHelper implements Initializable {
 
                     } catch (PersistenceException e){
                         e.printStackTrace();
-                        msg = "注册失败";
+                        msg = "注册失败,已有该用户";
                     }catch (RuntimeException e){
                         e.printStackTrace();
                         msg = "运行失败";
@@ -178,8 +178,8 @@ public class LoginController extends ViewHelper implements Initializable {
                                 );
                                 Platform.runLater(()->{
                                     myAvatar.setImage(image);
+                                    animateMessage("", messageLabel);
                                 });
-                                animateMessage("", messageLabel);
                             } catch (NoResultException e){
                                 Platform.runLater(()->{
                                     animateMessage("没有找到该用户", messageLabel);

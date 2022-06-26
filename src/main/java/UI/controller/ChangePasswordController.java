@@ -2,12 +2,14 @@ package UI.controller;
 
 import Dao.UserDao;
 import entity.User;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import javax.persistence.NoResultException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -53,20 +55,36 @@ public class ChangePasswordController extends ViewHelper implements Initializabl
             return;
         }
         else{
-            UserDao userDao = new UserDao();
-            User user = userDao.findByName(main.getUser().getUsername());
-            if(user.getPassword().equals(oldPassword)){
-                try{
-                    user.setPassword(newPassword);
-                    userDao.Insert(user);
-                    animateMessage("修改成功",messageLabel);
-                } catch (Exception e){
-                    e.printStackTrace();
-                    animateMessage("修改失败",messageLabel);
-                }
-            } else{
-                animateMessage("旧密码错误", messageLabel);
-            }
+            new Thread(){
+                @Override
+                public void run() {
+                    super.run();
+                    String msg = "";
+                        try{
+                            UserDao userDao = new UserDao();
+                            User user = userDao.findByName(main.getUser().getUsername());
+                            if(user.getPassword().equals(oldPassword)) {
+                                user.setPassword(newPassword);
+                                userDao.update(user);
+                                msg = "修改成功";
+                            } else{
+                                msg = "旧密码错误";
+                            }
+                        } catch (NoResultException e){
+                          msg = "没有找到该用户";
+                        } catch (Exception e){
+                            msg = "修改失败";
+                            e.printStackTrace();
+                        } finally {
+                            String finalMsg = msg;
+                            Platform.runLater(()->{
+                                toast(finalMsg, 3000);
+                                animateMessage(finalMsg,messageLabel);
+                            });
+                        }
+                    }
+            }.start();
+
         }
     }
 

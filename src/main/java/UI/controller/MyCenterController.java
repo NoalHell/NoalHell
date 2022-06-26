@@ -1,22 +1,38 @@
 package UI.controller;
 
+import config.StaticResourcesConfig;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.fxml.JavaFXBuilderFactory;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MyCenterController extends ViewHelper implements Initializable {
     @FXML
     ImageView myAvatar;
+    @FXML
+    AnchorPane mainContainer;
 
     private Main main;
     public void changePassword(ActionEvent actionEvent) {
+        try{
+            toChangePassword();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void listDefault(MouseEvent mouseEvent) {
@@ -41,5 +57,31 @@ public class MyCenterController extends ViewHelper implements Initializable {
 
     public void back(ActionEvent actionEvent) {
         main.toHome();
+    }
+
+    private void toChangePassword() throws Exception {
+        try{
+            ChangePasswordController c = (ChangePasswordController)replaceSceneContent("/fxml/ChangePassword.fxml");
+            c.setMain(main);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private Initializable replaceSceneContent(String fxml) throws Exception {
+
+        FXMLLoader loader = new FXMLLoader();
+        InputStream in = Main.class.getResourceAsStream(fxml);
+        loader.setBuilderFactory(new JavaFXBuilderFactory());
+        loader.setLocation(Main.class.getResource(fxml));
+        try {
+            Parent parent = loader.load();
+            mainContainer.getChildren().add(parent);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("页面加载异常！");
+        } finally {
+            in.close();
+        }
+        return (Initializable) loader.getController();
     }
 }
