@@ -1,5 +1,8 @@
 package UI.controller;
 
+import UI.controller.myCenter.AddressController;
+import UI.controller.myCenter.ChangeMyUserInfo;
+import UI.controller.myCenter.OrderListController;
 import config.StaticResourcesConfig;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -29,7 +32,8 @@ public class MyCenterController extends ViewHelper implements Initializable {
     private Main main;
     public void changePassword(ActionEvent actionEvent) {
         try{
-            toChangePassword();
+            ChangePasswordController c = (ChangePasswordController)replaceSceneContent("/fxml/ChangePassword.fxml");
+            c.setMain(main);
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -59,23 +63,23 @@ public class MyCenterController extends ViewHelper implements Initializable {
         main.toHome();
     }
 
-    private void toChangePassword() throws Exception {
-        try{
-            ChangePasswordController c = (ChangePasswordController)replaceSceneContent("/fxml/ChangePassword.fxml");
+    public void changeAddress(ActionEvent actionEvent) {
+        try {
+            AddressController c = (AddressController)replaceSceneContent("/fxml/AddAddress.fxml");
             c.setMain(main);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    private Initializable replaceSceneContent(String fxml) throws Exception {
 
+    private Initializable replaceSceneContent(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader();
         InputStream in = Main.class.getResourceAsStream(fxml);
         loader.setBuilderFactory(new JavaFXBuilderFactory());
         loader.setLocation(Main.class.getResource(fxml));
         try {
             Parent parent = loader.load();
-            mainContainer.getChildren().add(parent);
+            mainContainer.getChildren().setAll(parent);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("页面加载异常！");
@@ -83,5 +87,23 @@ public class MyCenterController extends ViewHelper implements Initializable {
             in.close();
         }
         return (Initializable) loader.getController();
+    }
+
+    public void myOrderList(ActionEvent actionEvent) {
+        try{
+            OrderListController c = (OrderListController)replaceSceneContent("/fxml/OrderList.fxml");
+            c.setMain(main);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void toChangeUserInfo(ActionEvent actionEvent) {
+        try {
+            ChangeMyUserInfo changeMyUserInfo = (ChangeMyUserInfo) replaceSceneContent("/fxml/ChangeMyUserInfo.fxml");
+            changeMyUserInfo.setMain(main);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

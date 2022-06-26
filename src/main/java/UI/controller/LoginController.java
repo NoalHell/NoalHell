@@ -89,44 +89,7 @@ public class LoginController extends ViewHelper implements Initializable {
     }
 
     public void registerAction(ActionEvent actionEvent) {
-        String username = userNameFeild.getText().trim();
-        String password = passwordField.getText().trim();
-        if(username.equals("")||password.equals("")){
-            showMessage("用户名或密码输入为空");
-        } else {
-            showLoading();
-            new Thread(){
-                @Override
-                public void run() {
-                    super.run();
-                    String msg = "unknown";
-                    try{
-                        User user = new User();
-                        user.setUsername(username);
-                        user.setPassword(password);
-                        UserDao userDao = new UserDao();
-                        userDao.Insert(user);
-                        msg = "注册成功！";
-
-                    } catch (PersistenceException e){
-                        e.printStackTrace();
-                        msg = "注册失败,已有该用户";
-                    }catch (RuntimeException e){
-                        e.printStackTrace();
-                        msg = "运行失败";
-                    }
-                    finally {
-                        String finalMsg = msg;
-                        Platform.runLater(()->{
-                            animateMessage(finalMsg, messageLabel);
-                            hideLoading();
-                        });
-                    }
-                }
-            }.start();
-
-        }
-
+        main.toRegister();
     }
 
     public void showMessage(String msg){

@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity     //声明实体类
 @Table(name = "ShopCar")    //建立实体类和表的映射关系
@@ -29,24 +30,21 @@ public class ShopCar  implements Serializable {
     private int num;
 
     //逻辑删除（0 未删除、1 删除）
-    private Integer deleted = 0;
-
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinTable(name = "ShopCar_goods",
-            joinColumns = @JoinColumn(name="ShopCar_id"),
-            inverseJoinColumns = @JoinColumn(name = "Goods_id"))//通过关联表保存一对一的关系
-     private Goods goods;
-
-    public void setGoods(Goods goods) {
-        this.goods = goods;
-    }
-
-    public Goods getGoods() {
-        return goods;
-    }
-
+    private Integer deleted;
     @Column(name = "price")
     private double price;
+
+    @OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+    private List<Goods> goodsList;
+
+    public void setGoodsList(List<Goods> goodsList) {
+        this.goodsList = goodsList;
+    }
+
+    public List<Goods> getGoodsList() {
+        return goodsList;
+    }
+
     public double getPrice() {
         return price;
     }
@@ -70,8 +68,6 @@ public class ShopCar  implements Serializable {
     public void setNum(int num) {
         this.num = num;
     }
-
-
 
 
     public int getNum() {

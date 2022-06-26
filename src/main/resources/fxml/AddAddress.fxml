@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.9999000000025" prefWidth="691.0000999999975" styleClass="background" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.2-internal" fx:controller="UI.controller.myCenter.AddressController">
+  <children>
+    <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <bottom>
+        <AnchorPane prefHeight="66.0" prefWidth="639.0" styleClass="top-segment">
+          <children>
+            <Button mnemonicParsing="false" onAction="#addDealDetailAction" text="确定" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="20.0" />
+            <Label styleClass="labelX" text="搜索" AnchorPane.bottomAnchor="26.41" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="27.59" />
+            <ChoiceBox fx:id="tableNoChoiceBox" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="52.0" />
+          </children>
+        </AnchorPane>
+      </bottom>
+      <center>
+        <TableView fx:id="addressTable" prefHeight="200.0" prefWidth="200.0">
+          <columns>
+            <TableColumn fx:id="isSelectCol" prefWidth="75.0" text="选择?" />
+            <TableColumn fx:id="nameCol" prefWidth="75.0" text="姓名" />
+            <TableColumn fx:id="telCol" prefWidth="75.0" text="电话" />
+            <TableColumn fx:id="addressCol" prefWidth="75.0" text="地址" />
+            <TableColumn fx:id="remarkCol" prefWidth="75.0" text="备注" />
+          </columns>
+        </TableView>
+      </center>
+      <left>
+        <AnchorPane prefHeight="373.0" prefWidth="14.000099999997474" />
+      </left>
+      <right>
+        <AnchorPane prefHeight="373.0" prefWidth="13.999900000002526" />
+      </right>
+      <top>
+        <AnchorPane prefHeight="57.0" prefWidth="639.0">
+          <children>
+            <TextField prefWidth="160.0" promptText="搜索" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="16.0" />
+            <Button mnemonicParsing="false" onAction="#close" prefHeight="31.0" text="关闭" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="16.0" />
+            <Label fx:id="messageLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="274.0" layoutY="26.0" prefWidth="145.0" styleClass="labelX, waring-label" />
+          </children>
+        </AnchorPane>
+      </top>
+    </BorderPane>
+  </children>
+</AnchorPane>

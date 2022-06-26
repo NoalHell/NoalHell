@@ -37,11 +37,26 @@ public class User implements Serializable {
     @Column(name="email", length = 20)
     private String email;
 
+    @Column(name="age", precision = 3)
+    private Integer age;
+
+    @Column(name = "phone", length = 20)
+    private String phone;
+
     //逻辑删除（0 未删除、1 删除）
     private Integer deleted = 0;
 
-    //set
+    public User(){}
 
+    public User(String username, String password,String email, String phone, Integer age){
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.age = age;
+    }
+
+    //set
 
     public void setDeleted(Integer deleted) {
         this.deleted = deleted;
@@ -92,18 +107,51 @@ public class User implements Serializable {
         return username;
     }
 
-    @OneToMany(mappedBy = "ownerUser",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    @OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
     //级联保存、更新、删除、刷新;延迟加载。当删除用户，会级联删除该用户的所有文章
     //拥有mappedBy注解的实体类为关系被维护端
     //mappedBy="ownerUserId"中的ownerUserId是Address中的ownerUserId属性
     private List<Address> addresses =new ArrayList<>();
 
-    public ArrayList<Address> getAddresses() {
-        return (ArrayList<Address>) addresses;
+    public List<Address> getAddresses() {
+        return addresses;
     }
 
     public void setAddresses(ArrayList<Address> addresses) {
         this.addresses = addresses;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name="avatar", nullable=true)
+    private byte[] avatar;
+
+    public byte[] getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(byte[] avatar) {
+        this.avatar = avatar;
     }
 
     @Override

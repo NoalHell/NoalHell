@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controller.myCenter.OrderListController">
+   <children>
+      <TableView
+              fx:id="orderTable"
+              prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="orderIdCol" prefWidth="75.0" text="编号" />
+            <TableColumn fx:id="orderPayStatueCol" prefWidth="75.0" text="支付状态" />
+            <TableColumn fx:id="orderPriceCol" prefWidth="75.0" text="金额" />
+            <TableColumn fx:id="orderRemarkCol" prefWidth="75.0" text="交易备注" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

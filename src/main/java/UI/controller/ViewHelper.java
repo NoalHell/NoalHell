@@ -12,8 +12,12 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -71,5 +75,38 @@ public abstract class ViewHelper {
 		Scene scene=new Scene(label);
 		scene.setFill(null);//场景透明
 		stage.setScene(scene);
+	}
+
+	private Stage dialogStage;
+	private ProgressIndicator progressIndicator;
+
+	public void showLoading(Stage primaryStage, String tip) {
+		dialogStage = new Stage();
+		progressIndicator = new ProgressIndicator();
+		// 窗口父子关系
+		dialogStage.initOwner(primaryStage);
+		dialogStage.initStyle(StageStyle.UNDECORATED);
+		dialogStage.initStyle(StageStyle.TRANSPARENT);
+		dialogStage.initModality(Modality.APPLICATION_MODAL);
+		// progress bar
+		Label label = new Label(tip);
+		label.setTextFill(Color.BLUE);
+		progressIndicator.setProgress(-1F);
+		VBox vBox = new VBox();
+		vBox.setSpacing(10);
+		vBox.setBackground(Background.EMPTY);
+		vBox.getChildren().addAll(progressIndicator,label);
+		Scene scene = new Scene(vBox);
+		scene.setFill(null);
+		dialogStage.setScene(scene);
+		dialogStage.show();
+	}
+
+	public Stage getLoadingStage(){
+		return dialogStage;
+	}
+
+	public void hideLoading() {
+		dialogStage.close();
 	}
 }

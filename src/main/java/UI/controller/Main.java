@@ -62,6 +62,16 @@ public class Main extends Application {
         }
     }
 
+    public void toRegister(){
+        try {
+            RegisterController c = (RegisterController) replaceSceneContent("/fxml/Register.fxml");
+            this.getStage().setTitle("注册");
+            c.setMain(this);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     public void toMyCenter(){
         try{
             MyCenterController myCenterController = (MyCenterController) replaceSceneContent("/fxml/MyCenter.fxml");

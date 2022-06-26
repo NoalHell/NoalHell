@@ -45,7 +45,4 @@
     </children>
   </VBox>
   </children>
-<!--  <stylesheets>-->
-<!--    <URL value="@Login.css" />-->
-<!--  </stylesheets>-->
 </AnchorPane>

@@ -8,7 +8,12 @@ import javax.persistence.EntityTransaction;
 import java.io.Serializable;
 
 public class MyDao {
-    public <E extends Serializable> void insert(E data){
+    protected EntityManager entityManager;
+    public MyDao(){
+        this.entityManager = JpaUtil.getEntityManager();
+    }
+
+    protected  <E extends Serializable> void insert(E data){
         //1.获取事务对象
         EntityManager entityManager = JpaUtil.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
@@ -22,7 +27,7 @@ public class MyDao {
         entityManager.close();
     }
 
-    public <E extends Serializable> E update(E data){
+    protected  <E extends Serializable> E update(E data){
         //1. 获取实体类管理器
         EntityManager entityManager = JpaUtil.getEntityManager();
         //获取事务

@@ -1,8 +1,10 @@
 package UI.controller;
 
 import Dao.GoodsDao;
+import Dao.OrderDao;
 import Dao.ShopCarDao;
 import entity.Goods;
+import entity.Order;
 import entity.ShopCar;
 import entity.User;
 import javafx.application.Platform;
@@ -121,6 +123,12 @@ public class HomeController extends ViewHelper implements Initializable {
 
     // buy
     public void buyGoodsAction(ActionEvent actionEvent) {
+        Order order = new Order();
+        order.setPayStatue(0);
+        order.setPrice(selectGoodsItem.getPrice());
+        order.setUserId(main.getUser().getId());
+        OrderDao orderDao = new OrderDao();
+        orderDao.insert(order);
     }
     // order
     public void addGoodsOrderAction(ActionEvent actionEvent) {
@@ -131,17 +139,18 @@ public class HomeController extends ViewHelper implements Initializable {
         ShopCarDao shopCarDao = new ShopCarDao();
         ShopCar had;
         try {
-            had = shopCarDao.findByGoodsId(selectGoodsItem.getId());
+            had = shopCarDao.findByGoodsId(
+                    main.getUser().getId(),
+                    selectGoodsItem.getId()
+            );
         }catch (NoResultException e){
             had = null;
         }
         try {
             if(had == null) {
                 ShopCar save = new ShopCar();
-                save.setGoodsId(selectGoodsItem.getId());
                 save.setUserId(main.getUser().getId());
-                save.setNum(1);
-                save.setPrice(selectGoodsItem.getPrice());
+                save.setGoodsId(selectGoodsItem.getId());
                 shopCarDao.Insert(save);
                 notifyCarListChange(save);
             } else {

@@ -12,9 +12,8 @@ import java.util.List;
 
 public class ShopCarDao extends MyDao{
 
-    EntityManager entityManager;
-    public ShopCarDao(){
-        this.entityManager = JpaUtil.getEntityManager();
+    public ShopCarDao() {
+
     }
 
     public void delete(ShopCar shopCar){
@@ -72,8 +71,23 @@ public class ShopCarDao extends MyDao{
 //        return merge;
     }
 
-    public ShopCar findByGoodsId(int id) {
-        Query query = entityManager.createQuery("select s from ShopCar s where s.goodsId = ?1", ShopCar.class);
+
+
+    public ShopCar findByGoodsId(int userId,int goodsId) {
+        Query query = entityManager.createQuery("select s from ShopCar s where s.userId =?1 and s.goodsId = ?2", ShopCar.class);
+        query.setParameter(1, userId);
+        query.setParameter(2, goodsId);
+        return (ShopCar) query.getSingleResult();
+    }
+
+    public ShopCar findOneByUserId(int id) {
+        Query query = entityManager.createQuery("select s from ShopCar s where s.userId = ?1", ShopCar.class);
+        query.setParameter(1, id);
+        return (ShopCar) query.getSingleResult();
+    }
+
+    public ShopCar findOneById(int id) {
+        Query query = entityManager.createQuery("select s from ShopCar s where s.id = ?1", ShopCar.class);
         query.setParameter(1, id);
         return (ShopCar) query.getSingleResult();
     }

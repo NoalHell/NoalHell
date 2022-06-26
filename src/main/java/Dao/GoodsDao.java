@@ -11,9 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GoodsDao extends MyDao{
-    EntityManager entityManager;
     public GoodsDao(){
-        this.entityManager = JpaUtil.getEntityManager();
     }
 
     public void Insert(Goods goods) {

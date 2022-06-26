@@ -7,7 +7,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/myOrder.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controller.MyCenterController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/myOrder.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="UI.controller.MyCenterController">
     <BorderPane styleClass="green-theme" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <top>
             <AnchorPane prefHeight="80.0">
@@ -32,17 +33,17 @@
                         <panes>
                             <TitledPane alignment="TOP_LEFT" text="个人信息">
                                 <VBox minHeight="100" spacing="10" styleClass="dark-theme">
-                                    <Button styleClass="menu-btn" text="修改个人信息" />
+                                    <Button styleClass="menu-btn" text="修改个人信息" onAction="#toChangeUserInfo" />
                                 </VBox>
                             </TitledPane>
                             <TitledPane alignment="TOP_LEFT" text="地址管理">
                                 <VBox minHeight="100" spacing="10" styleClass="dark-theme">
-                                    <Button onAction="#changePassword" styleClass="menu-btn" text="添加地址" />
+                                    <Button onAction="#changeAddress" styleClass="menu-btn" text="添加地址" />
                                 </VBox>
                             </TitledPane>
                             <TitledPane alignment="TOP_LEFT" text="订单管理">
                                 <VBox minHeight="100" spacing="10" styleClass="dark-theme">
-                                    <Button onAction="#changePassword" styleClass="menu-btn" text="我的订单" />
+                                    <Button onAction="#myOrderList" styleClass="menu-btn" text="我的订单" />
                                 </VBox>
                             </TitledPane>
                             <TitledPane alignment="TOP_LEFT" text="安全">
