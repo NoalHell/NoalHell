@@ -7,19 +7,25 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane stylesheets="@../css/ChangeUser.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controller.myCenter.ChangeMyUserInfo">
-   <Pane id="AlterPerson" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0">
+   <Pane id="AlterPerson" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
       <children>
-         <Button id="background" disable="true" layoutY="-1.0" mnemonicParsing="false" prefHeight="450.0" prefWidth="450.0" />
-         <Pane id="pane" layoutY="220.0" prefHeight="580.0" prefWidth="450.0">
+         <Button id="background" disable="true" layoutY="-1.0" mnemonicParsing="false" prefHeight="450.0" prefWidth="800.0" />
+      </children>
+   </Pane>
+   <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
+      <content>
+         <Pane id="pane" prefHeight="580.0" prefWidth="600.0">
             <children>
                <Button id="head" layoutX="150.0" layoutY="-77.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0">
                   <effect>
                      <DropShadow color="#0000008c" height="11.0" radius="5.0" width="11.0" />
-                  </effect></Button>
+                  </effect>
+               </Button>
                <Button id="replace" layoutX="331.0" layoutY="45.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="70.0" text="更换" textFill="WHITE">
                   <effect>
                      <DropShadow color="#000000a1" height="11.0" radius="5.0" width="11.0" />
-                  </effect></Button>
+                  </effect>
+               </Button>
                <Label id="account" layoutX="123.0" layoutY="87.0" prefHeight="40.0" prefWidth="206.0" text="daydream" textAlignment="CENTER" textFill="#b5b5b5">
                   <font>
                      <Font name="Forte" size="24.0" />
@@ -57,11 +63,13 @@
                <Button id="submit" layoutX="346.0" layoutY="527.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="70.0" text="保存" textFill="WHITE">
                   <effect>
                      <DropShadow color="#0000008b" height="11.0" radius="5.0" width="11.0" />
-                  </effect></Button>
+                  </effect>
+               </Button>
                <Button id="cancel" layoutX="249.0" layoutY="527.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="70.0" text="关闭" textFill="WHITE">
                   <effect>
                      <DropShadow color="#00000090" height="11.0" radius="5.0" width="11.0" />
-                  </effect></Button>
+                  </effect>
+               </Button>
                <Label layoutX="14.0" layoutY="319.0" prefHeight="32.0" prefWidth="60.0" text="年龄:" textFill="#a4a4a4" />
                <Label layoutX="14.0" layoutY="398.0" prefHeight="32.0" prefWidth="60.0" text="家乡:" textFill="#9e9e9e" />
                <Label layoutX="14.0" layoutY="467.0" prefHeight="32.0" prefWidth="60.0" text="电话号:" textFill="#a4a4a4" />
@@ -73,7 +81,10 @@
             <effect>
                <DropShadow color="#000000a5" height="11.0" radius="5.0" width="11.0" />
             </effect>
+            <padding>
+               <Insets top="500.0" />
+            </padding>
          </Pane>
-      </children>
-   </Pane>
+      </content>
+   </ScrollPane>
 </AnchorPane>

@@ -65,7 +65,7 @@
                     </HBox>
                     <HBox id="HBox" alignment="CENTER_RIGHT" spacing="5.0">
                       <children>
-                        <Button mnemonicParsing="false" onAction="#checkOutAction" text="立即结算" />
+                        <Button mnemonicParsing="false" onAction="#checkOutAction" text="立即购买全部" />
                       </children>
                     </HBox>
                   </children>
@@ -97,19 +97,19 @@
                         <Label prefHeight="37.0" styleClass="labelX" text="商品列表" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="3.0" />
                         <AnchorPane id="AnchorPane" layoutY="5.0" minWidth="204.0" prefHeight="36.0" prefWidth="204.0" AnchorPane.leftAnchor="67.0">
                           <children>
-                            <TextField fx:id="searchField" onAction="#searchAction" prefHeight="24.0" prefWidth="186.0" promptText="搜索" styleClass="search-box" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="9.0" AnchorPane.topAnchor="6.0">
+                            <TextField fx:id="searchField" prefHeight="24.0" prefWidth="186.0" promptText="搜索" styleClass="search-box" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="9.0" AnchorPane.topAnchor="6.0">
 <!--                              <stylesheets>-->
 <!--                                <URL value="@SearchBox.css" />-->
 <!--                              </stylesheets>-->
                             </TextField>
-                            <Button fx:id="clearButton" minHeight="9.9998779296875" minWidth="9.0" mnemonicParsing="false" onAction="#clearAction" prefHeight="12.0" prefWidth="12.0" styleClass="search-box" visible="false" AnchorPane.bottomAnchor="11.5" AnchorPane.leftAnchor="178.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="11.5">
+                            <Button minHeight="9.9998779296875" minWidth="9.0" mnemonicParsing="false" onAction="#searchGoodsAction" prefHeight="12.0" prefWidth="12.0" styleClass="search-box" visible="false" AnchorPane.bottomAnchor="11.5" AnchorPane.leftAnchor="178.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="11.5">
 <!--                              <stylesheets>-->
 <!--                                <URL value="@SearchBox.css" />-->
 <!--                              </stylesheets>-->
                             </Button>
                           </children>
                         </AnchorPane>
-                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#searchAction" prefHeight="27.0" prefWidth="84.0" text="搜索商品" textOverrun="CLIP" AnchorPane.leftAnchor="271.0" AnchorPane.topAnchor="9.0" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#searchGoodsAction" prefHeight="27.0" prefWidth="84.0" text="搜索商品" textOverrun="CLIP" AnchorPane.leftAnchor="271.0" AnchorPane.topAnchor="9.0" />
                       </children>
                     </AnchorPane>
                   </top>
@@ -161,7 +161,6 @@
       <ToolBar prefHeight="20.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <items>
           <Button mnemonicParsing="false" text="个人中心" onAction="#toMyCenterAction"/>
-            <Button mnemonicParsing="false" text="修改密码" onAction="#changePassword" />
         </items>
           <items>
               <Button mnemonicParsing="false" onAction="#logout" text="退出登录" />

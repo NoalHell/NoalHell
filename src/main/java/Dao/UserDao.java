@@ -26,28 +26,6 @@ public class UserDao extends MyDao {
         return super.update(user);
     }
 
-//    public User getByUserName(String username){
-//        EntityManager entityManager = JpaUtil.getEntityManager();
-//        EntityTransaction transaction = entityManager.getTransaction();
-//        transaction.begin();
-//        //查询id=5的顾客
-//        String sql ="select * from myUser where username = ?";
-//        Query query = entityManager.createNativeQuery("select * from myUser where username = "+"\'"+username+"\'");
-//        List rows = query.getResultList();
-//        User user = null;
-//        if(rows.size()!=0){
-//            Object row = rows.get(0);
-//            Object[] cells = (Object[]) row;
-//            user =new User();
-//            user.setId((Integer) cells[0]);
-//            user.setBirthday((Date)  cells[1]);
-//            user.setEmail((String) cells[2]);
-//            user.setPassword((String) cells[3]);
-//            user.setSex((Boolean) cells[4]);
-//            user.setUsername((String) cells[5]);
-//        }
-//        return user;
-//    }
 
     public User findByName(String name) {
 //        Query query = entityManager.createQuery("select u from User u where u.username like :name", User.class);

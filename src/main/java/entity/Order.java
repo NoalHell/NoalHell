@@ -13,9 +13,6 @@ public class Order implements Serializable {
     @Column(name="userId", nullable = false)
     private int userId;
 
-    @Column(name="cartId", nullable = false)
-    private int cartId;
-
     @Column(name="payStatue")
     private int payStatue;
 
@@ -25,10 +22,7 @@ public class Order implements Serializable {
     @Column(name="remark")
     private String remark;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinTable(name = "Order_ShopCar",
-            joinColumns = @JoinColumn(name="Order_id"),
-            inverseJoinColumns = @JoinColumn(name = "ShopCar_id"))//通过关联表保存一对一的关系
+    @OneToOne
     private ShopCar shopCar;
 
     public void setShopCar(ShopCar shopCar) {
@@ -49,9 +43,6 @@ public class Order implements Serializable {
         this.price = price;
     }
 
-    public void setCartId(int cartId) {
-        this.cartId = cartId;
-    }
 
     public void setPayStatue(int payStatue) {
         this.payStatue = payStatue;
@@ -71,10 +62,6 @@ public class Order implements Serializable {
 
     public Double getPrice() {
         return price;
-    }
-
-    public int getCartId() {
-        return cartId;
     }
 
     public int getPayStatue() {

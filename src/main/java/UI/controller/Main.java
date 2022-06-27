@@ -36,7 +36,6 @@ public class Main extends Application {
         scene.getStylesheets().add(getClass().getResource("/css/login.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
-//        toHome();
     }
     public static void main(String[] args) {
         launch(args);

@@ -34,7 +34,5 @@ public class Test {
         GoodsDao goodsDao = new GoodsDao();
         goodsDao.Insert(goods);
 
-
-
     }
 }

@@ -12,6 +12,10 @@ import java.util.List;
 
 public class ShopCarDao extends MyDao{
 
+    public static ShopCarDao getDao(){
+        return new ShopCarDao();
+    }
+
     public ShopCarDao() {
 
     }
@@ -19,36 +23,10 @@ public class ShopCarDao extends MyDao{
     public void delete(ShopCar shopCar){
         shopCar.setDeleted(1);
         this.update(shopCar);
-//        //1. 获取实体类管理器
-//        EntityManager entityManager = JpaUtil.getEntityManager();
-//        //获取事务
-//        EntityTransaction transaction = entityManager.getTransaction();
-//        //开启事务
-//        transaction.begin();
-//        //查询出来需要修改的数据
-//        //修改数据
-//        shopCar.setDeleted(1);
-//        ShopCar merge = entityManager.merge(shopCar);
-//        System.out.println("数据修改成功后数据" + merge);
-//        //  提交事务
-//        transaction.commit();
-//        //关闭链接
-//        entityManager.close();
     }
 
-    public void Insert(ShopCar shopCar) {
-        this.insert(shopCar);
-//        //1.获取事务对象
-//        EntityManager entityManager = JpaUtil.getEntityManager();
-//        EntityTransaction transaction = entityManager.getTransaction();
-//        //2.开启事务
-//        transaction.begin();
-//        //3.添加操作
-//        entityManager.persist(shopCar);
-//        //4.提交事务·
-//        transaction.commit();
-//        //5.关闭资源
-//        entityManager.close();
+    public void insert(ShopCar shopCar) {
+        super.insert(shopCar);
     }
 
     public ShopCar update(ShopCar shopCar) {
@@ -72,16 +50,8 @@ public class ShopCarDao extends MyDao{
     }
 
 
-
-    public ShopCar findByGoodsId(int userId,int goodsId) {
-        Query query = entityManager.createQuery("select s from ShopCar s where s.userId =?1 and s.goodsId = ?2", ShopCar.class);
-        query.setParameter(1, userId);
-        query.setParameter(2, goodsId);
-        return (ShopCar) query.getSingleResult();
-    }
-
     public ShopCar findOneByUserId(int id) {
-        Query query = entityManager.createQuery("select s from ShopCar s where s.userId = ?1", ShopCar.class);
+        Query query = entityManager.createQuery("select s from ShopCar s where s.userId = ?1 and  s.statue = 0", ShopCar.class);
         query.setParameter(1, id);
         return (ShopCar) query.getSingleResult();
     }

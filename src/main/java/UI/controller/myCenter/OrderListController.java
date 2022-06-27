@@ -56,7 +56,7 @@ public class OrderListController extends ViewHelper implements Initializable {
                 super.run();
                 try{
                     OrderDao orderDao = new OrderDao();
-                    orderSource.addAll(orderDao.findMyAllById(main.getUser().getId()));
+                    orderSource.addAll(orderDao.findMyAllByUserId(main.getUser().getId()));
                     Platform.runLater(()->{
                         orderTable.setItems(orderSource);
                     });

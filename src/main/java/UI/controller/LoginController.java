@@ -56,19 +56,18 @@ public class LoginController extends ViewHelper implements Initializable {
                     try{
                         UserDao userDao = new UserDao();
                         User user = userDao.findByName(username);
-                        if(user!=null){
-                            if(user.getPassword().equals(password)){
-                                msg = "登录成功";
-                                isLogin = true;
-                                // 全局变量
-                                main.setUser(user);
-                            } else {
-                                msg = "用户名或密码错误";
-                            }
+                        if(user.getPassword().equals(password)){
+                            msg = "登录成功";
+                            isLogin = true;
+                            // 全局变量
+                            main.setUser(user);
                         } else {
-                            msg = "该用户还未注册";
+                            msg = "用户名或密码错误";
                         }
-                    } catch (RuntimeException e){
+                    } catch (NoResultException e){
+                        msg = "该用户还未注册";
+                    }
+                    catch (RuntimeException e){
                         msg = "运行时错误";
                     } finally {
                         String finalMsg = msg;

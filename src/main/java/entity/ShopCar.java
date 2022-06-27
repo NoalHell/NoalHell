@@ -22,35 +22,22 @@ public class ShopCar  implements Serializable {
     private int id;
     @Column(name = "userId", nullable = false)
     private int userId;
+    @Column(name = "statue")
+    private int statue = 0;
 
-    @Column(name = "goodsId", nullable = false)
-    private int goodsId;
-
-    @Column(name = "num", nullable = false)
-    private int num;
 
     //逻辑删除（0 未删除、1 删除）
-    private Integer deleted;
-    @Column(name = "price")
-    private double price;
+    private int deleted;
 
     @OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-    private List<Goods> goodsList;
+    private List<ShopCarItem> goodsItemList = new ArrayList<>();
 
-    public void setGoodsList(List<Goods> goodsList) {
-        this.goodsList = goodsList;
+    public List<ShopCarItem> getGoodsItemList() {
+        return goodsItemList;
     }
 
-    public List<Goods> getGoodsList() {
-        return goodsList;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
+    public void setGoodsItemList(List<ShopCarItem> goodsItemList) {
+        this.goodsItemList = goodsItemList;
     }
 
     public void setId(int id) {
@@ -61,25 +48,8 @@ public class ShopCar  implements Serializable {
         this.userId = userId;
     }
 
-    public void setGoodsId(int goodsId) {
-        this.goodsId = goodsId;
-    }
-
-    public void setNum(int num) {
-        this.num = num;
-    }
-
-
-    public int getNum() {
-        return num;
-    }
-
     public int getId() {
         return id;
-    }
-
-    public int getGoodsId() {
-        return goodsId;
     }
 
     public int getUserId() {
@@ -90,5 +60,17 @@ public class ShopCar  implements Serializable {
 
     public void setDeleted(Integer deleted) {
         this.deleted = deleted;
+    }
+
+    public void addShopCarItem(ShopCarItem shopCarItem){
+        this.goodsItemList.add(shopCarItem);
+    }
+
+    public int getStatue() {
+        return statue;
+    }
+
+    public void setStatue(int statue) {
+        this.statue = statue;
     }
 }

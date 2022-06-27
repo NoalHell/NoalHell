@@ -21,7 +21,7 @@ public class OrderDao extends MyDao {
         return(Order) query.getSingleResult();
     }
 
-    public ArrayList<Order> findMyAllById(int userId){
+    public ArrayList<Order> findMyAllByUserId(int userId){
         Query query = entityManager.createQuery("select o from Order o where o.userId =?1", Order.class);
         query.setParameter(1, userId);
         return (ArrayList<Order>) query.getResultList();

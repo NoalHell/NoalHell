@@ -3,10 +3,7 @@ package UI.controller;
 import Dao.GoodsDao;
 import Dao.OrderDao;
 import Dao.ShopCarDao;
-import entity.Goods;
-import entity.Order;
-import entity.ShopCar;
-import entity.User;
+import entity.*;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -19,17 +16,19 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
+import model.ShowShopCarItemData;
 
 import javax.persistence.NoResultException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
 public class HomeController extends ViewHelper implements Initializable {
 
     Main main;
+
     @FXML
     TextField sumPriceField; // 预计花费
     @FXML
@@ -56,27 +55,51 @@ public class HomeController extends ViewHelper implements Initializable {
 
     // shopCar table
 
-    ObservableList<ShopCar> shopCarSource=  FXCollections.observableArrayList();
+    ObservableList<ShowShopCarItemData> showShopCarItemSource=  FXCollections.observableArrayList();
     @FXML
-    public TableView<ShopCar> shopCarTable;
+    public TableView<ShowShopCarItemData> shopCarTable;
 
     @FXML
-    private TableColumn<ShopCar, Integer> shopCarIdCol;
+    private TableColumn<ShowShopCarItemData, Integer> shopCarIdCol;
 
     @FXML
-    private TableColumn<ShopCar, Integer> shopCarNumCol;
+    private TableColumn<ShowShopCarItemData, Integer> shopCarNumCol;
 
     @FXML
-    private TableColumn<ShopCar, String> shopCarNameCol;
+    private TableColumn<ShowShopCarItemData, String> shopCarNameCol;
 
     @FXML
-    private TableColumn<ShopCar, Double> shopCarPriceCol;
+    private TableColumn<ShowShopCarItemData, Double> shopCarPriceCol;
 
-    public  void setMain(Main main) {
+    public void setMain(Main main) {
         this.main = main;
+        showLoading(main.getStage(), "加载数据中");
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                try{
+                    getGoodsData();
+                    getCarData();
+                    Platform.runLater(()->{
+                        toast("加载成功!", 2000);
+                    });
+                }catch (Exception e){
+                    Platform.runLater(()->{
+                        toast("加载失败!", 2000);
+                    });
+                }finally {
+                    Platform.runLater(()->{
+                        hideLoading();
+                    });
+                }
+
+            }
+        }.start();
     }
 
     private Goods selectGoodsItem;
+    // 初始化商品表格
     private void initGoodsTable(){
         /*
          * add a listener
@@ -100,14 +123,15 @@ public class HomeController extends ViewHelper implements Initializable {
 //        userTableView.setItems(userSource);
     }
 
+    // 初始化购物车
     private void initCarTable(){
         /*
          * add a listener
          * 为deal表格添加选中行选中变化监听器，以更新消费金额文本框
          */
-        shopCarTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ShopCar>() {
+        shopCarTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ShowShopCarItemData>() {
             @Override
-            public void changed(ObservableValue<? extends ShopCar> observable, ShopCar oldValue, ShopCar newValue) {
+            public void changed(ObservableValue<? extends ShowShopCarItemData> observable, ShowShopCarItemData oldValue, ShowShopCarItemData newValue) {
 
             }
         });
@@ -115,22 +139,48 @@ public class HomeController extends ViewHelper implements Initializable {
          *dealTable,initialize some data int it;
          *为表格载入数据
          */
-        shopCarIdCol.setCellValueFactory(new PropertyValueFactory<ShopCar,Integer>("id"));
-        shopCarNumCol.setCellValueFactory(new PropertyValueFactory<ShopCar,Integer>("num"));
-        shopCarNameCol.setCellValueFactory(new PropertyValueFactory<ShopCar,String>("name"));
-        shopCarPriceCol.setCellValueFactory(new PropertyValueFactory<ShopCar,Double>("price"));
+        shopCarIdCol.setCellValueFactory(new PropertyValueFactory<ShowShopCarItemData,Integer>("id"));
+        shopCarNumCol.setCellValueFactory(new PropertyValueFactory<ShowShopCarItemData,Integer>("num"));
+        shopCarNameCol.setCellValueFactory(new PropertyValueFactory<ShowShopCarItemData,String>("name"));
+        shopCarPriceCol.setCellValueFactory(new PropertyValueFactory<ShowShopCarItemData,Double>("price"));
     }
 
-    // buy
+    // 购买商品
     public void buyGoodsAction(ActionEvent actionEvent) {
-        Order order = new Order();
-        order.setPayStatue(0);
-        order.setPrice(selectGoodsItem.getPrice());
-        order.setUserId(main.getUser().getId());
-        OrderDao orderDao = new OrderDao();
-        orderDao.insert(order);
+        if(selectGoodsItem==null){
+            toast("还没有选择需要购买的商品!", 1000);
+            return ;
+        }
+        showLoading(main.getStage(), "购买中");
+        try{
+            Order order = new Order();
+            ShopCar shopCar =new ShopCar();
+            shopCar.setStatue(1);
+            shopCar.setUserId(main.getUser().getId());
+            // 添加对象之前需要保存
+            new ShopCarDao().insert(shopCar);
+            order.setShopCar(shopCar);
+            order.setPayStatue(0);
+            order.setPrice(selectGoodsItem.getPrice());
+            order.setUserId(main.getUser().getId());
+            OrderDao orderDao = new OrderDao();
+            orderDao.insert(order);
+            Platform.runLater(()->{
+                toast("购买成功!", 1000);
+            });
+        } catch (Exception e){
+            e.printStackTrace();
+            Platform.runLater(()->{
+                toast("购买失败!原因:"+e.toString(), 1000);
+            });
+        } finally {
+            Platform.runLater(()->{
+                hideLoading();
+            });
+        }
+
     }
-    // order
+    // 加入购物车
     public void addGoodsOrderAction(ActionEvent actionEvent) {
         if(selectGoodsItem==null){
             toast("还没有选择添加的商品", 1000);
@@ -139,9 +189,8 @@ public class HomeController extends ViewHelper implements Initializable {
         ShopCarDao shopCarDao = new ShopCarDao();
         ShopCar had;
         try {
-            had = shopCarDao.findByGoodsId(
-                    main.getUser().getId(),
-                    selectGoodsItem.getId()
+            had = shopCarDao.findOneByUserId(
+                    main.getUser().getId()
             );
         }catch (NoResultException e){
             had = null;
@@ -150,76 +199,116 @@ public class HomeController extends ViewHelper implements Initializable {
             if(had == null) {
                 ShopCar save = new ShopCar();
                 save.setUserId(main.getUser().getId());
-                save.setGoodsId(selectGoodsItem.getId());
-                shopCarDao.Insert(save);
-                notifyCarListChange(save);
+//                List<Goods> goodsList = new ArrayList<>();
+                ShopCarItem shopCarItem = new ShopCarItem();
+                shopCarItem.setGoods(selectGoodsItem);
+                shopCarItem.setNum(1);
+//                goodsList.add(selectGoodsItem);
+
+                save.addShopCarItem(shopCarItem);
+                shopCarDao.insert(save);
+                notifyCarListChange(shopCarItem);
             } else {
-                int num = had.getNum() +1;
-                had.setNum(num);
-                shopCarDao.update(had);
-                notifyCarListChange(had);
+                boolean isHave = false;
+                for(int i=0;i< had.getGoodsItemList().size();i++){
+                    ShopCarItem item = had.getGoodsItemList().get(i);
+                    // 购物车中有
+                    if(item.getGoods().getId() == selectGoodsItem.getId()){
+                        // 添加一个
+                        int num = item.getNum()+1;
+                        item.setNum(num);
+                        
+                        // 更新持久层
+                        shopCarDao.update(had);
+                        isHave = true;
+                        notifyCarListChange(item);
+                        break;    
+                    }
+                }
+                if(!isHave){
+                    ShopCarItem shopCarItem = new ShopCarItem();
+                    shopCarItem.setGoods(selectGoodsItem);
+                    shopCarItem.setNum(1);
+                    had.addShopCarItem(shopCarItem);
+                    shopCarDao.update(had);
+                    notifyCarListChange(shopCarItem);
+                    
+                }
             }
         }
         catch (Exception e){
             e.printStackTrace();
         }
     }
-    //check out
+    // 购买全部
     public void checkOutAction(ActionEvent actionEvent) {
-    }
-    @FXML
-    TextField searchField;
-    // 搜索
-    public void searchAction(ActionEvent actionEvent) {
-        String search = searchField.getText();
-        if(search.equals("")){
-            toast("请输入需要搜索的商品名称", 1000);
+        if(showShopCarItemSource.size()==0){
+            toast("购物车中还没有商品",1000);
             return;
         }
-        new Thread(){
-            @Override
-            public void run() {
-                super.run();
-                getGoodsData();
-            }
-        }.start();
-    }
-    //clear
-    public void clearAction(ActionEvent actionEvent) {
+        showLoading(main.getStage(), "购买中!");
+        try {
+            ShopCarDao shopCarDao = new ShopCarDao();
+
+            ShopCar shopCar = new ShopCarDao().findOneByUserId(main.getUser().getId());
+            shopCar.setStatue(1);
+            shopCarDao.update(shopCar);
+
+            Order order = new Order();
+            order.setShopCar(shopCar);
+            order.setPayStatue(0);
+            order.setUserId(main.getUser().getId());
+            order.setPrice(finalCost);
+
+            new OrderDao().insert(order);
+
+            showShopCarItemSource = FXCollections.observableArrayList();
+            Platform.runLater(()->{
+                toast("购买成功!", 1000);
+                shopCarTable.setItems(showShopCarItemSource);
+            });
+        } catch (Exception e){
+            Platform.runLater(()->{
+                toast("购买失败!", 1000);
+            });
+            e.printStackTrace();
+        } finally {
+            hideLoading();
+            Platform.runLater(()->{
+                notifyResultNumberChange();
+            });
+        }
     }
 
     // 清空购物车
     public void clearAllOrderAction(ActionEvent actionEvent) {
-        if(shopCarSource.size()==0){
+        if(showShopCarItemSource.size()==0){
             toast("还没有添加", 1000);
             return;
         }
+        showLoading(main.getStage(), "清空购物车中");
         try {
             ShopCarDao shopCarDao = new ShopCarDao();
-            for(ShopCar s:shopCarSource){
-                shopCarDao.delete(s);
-            }
-            shopCarSource = FXCollections.observableArrayList();
+
+            ShopCar shopCar = shopCarDao.findOneByUserId(main.getUser().getId());
+            shopCarDao.delete(shopCar);
+
+            showShopCarItemSource = FXCollections.observableArrayList();
             Platform.runLater(()->{
-                shopCarTable.setItems(shopCarSource);
+                toast("清空成功!", 1000);
+                shopCarTable.setItems(showShopCarItemSource);
             });
         } catch (Exception e){
+            Platform.runLater(()->{
+                toast("清空失败!", 1000);
+            });
             e.printStackTrace();
+        } finally {
+            hideLoading();
         }
     }
 
-    public void getGoodsDataByName(String name){
-        GoodsDao goodsDao = new GoodsDao();
-        ArrayList<Goods> goods = goodsDao.findByName(name);
-        goodsSource = FXCollections.observableArrayList();
-        for(Goods g:goods){
-            goodsSource.add(g);
-        }
-        Platform.runLater(()->{
-            goodsTable.setItems(goodsSource);
-        });
-    }
-
+    // 获取商品数据
     public void getGoodsData(){
         GoodsDao goodsDao = new GoodsDao();
         ArrayList<Goods> goods = goodsDao.findAll();
@@ -232,77 +321,89 @@ public class HomeController extends ViewHelper implements Initializable {
         });
     }
 
+    // 获取购物车数据
     public void getCarData(){
-        ShopCarDao shopCarDao = new ShopCarDao();
-        ArrayList<ShopCar> shopCars = shopCarDao.findMyAll(main.getUser().getId());
-        shopCarSource = FXCollections.observableArrayList();
-        for(ShopCar s:shopCars){
-            shopCarSource.add(s);
+        try {
+            ShopCarDao shopCarDao = new ShopCarDao();
+            ShopCar shopCar = shopCarDao.findOneByUserId(main.getUser().getId());
+            showShopCarItemSource = FXCollections.observableArrayList();
+            for(ShopCarItem s:shopCar.getGoodsItemList()){
+                ShowShopCarItemData show = new ShowShopCarItemData(s);
+                showShopCarItemSource.add(show);
+            }
+            Platform.runLater(()->{
+                shopCarTable.setItems(showShopCarItemSource);
+                notifyResultNumberChange();
+            });
+        } catch (NoResultException e){
+
+        } catch (Exception e){
+            e.printStackTrace();
+        } finally {
+
         }
-        Platform.runLater(()->{
-            shopCarTable.setItems(shopCarSource);
-        });
     }
 
-    private void notifyCarListChange(ShopCar shopCar){
-        shopCarSource.removeIf(new Predicate<ShopCar>() {
+    // 通知购物车列表刷新
+    private void notifyCarListChange(ShopCarItem item){
+        showShopCarItemSource.removeIf(new Predicate<ShowShopCarItemData>() {
             @Override
-            public boolean test(ShopCar s) {
-                if(s.getId()== shopCar.getId()) {
+            public boolean test(ShowShopCarItemData showShopCarItemData) {
+                if(showShopCarItemData.getId()== item.getId()) {
                     return true;
                 } else {
                     return false;
                 }
             }
         });
-        shopCarSource.add(shopCar);
+        ShowShopCarItemData show = new ShowShopCarItemData(item);
+        showShopCarItemSource.add(show);
+        shopCarTable.setItems(showShopCarItemSource);
+        notifyResultNumberChange();
+    }
+
+    private Double finalCost;
+    // 通知金额刷新
+    private void notifyResultNumberChange(){
         double sum = 0.0;
-        for(ShopCar e: shopCarSource){
+        for(ShowShopCarItemData e: showShopCarItemSource){
             sum+= e.getPrice()*e.getNum();
         }
+        finalCost = sum;
         sumPriceField.setText(sum+"元");
-
+        finalCostField.setText(sum+"元");
     }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initGoodsTable();
         initCarTable();
+    }
+
+    // 退出登录
+    public void logout(ActionEvent actionEvent) {
+        main.toLogin();
+    }
+    // 跳转到我的中心事件
+    public void toMyCenterAction(ActionEvent actionEvent) {
+        main.toMyCenter();
+    }
+    @FXML
+    TextField searchField; // 搜索框
+    // 搜索商品
+    public void searchGoodsAction(ActionEvent actionEvent) {
+        String search = searchField.getText();
+        if(search.equals("")){
+            toast("请输入需要搜索的商品名称", 1000);
+            return;
+        }
         new Thread(){
             @Override
             public void run() {
                 super.run();
                 getGoodsData();
-                getCarData();
             }
         }.start();
-    }
-
-    public void logout(ActionEvent actionEvent) {
-        main.toLogin();
-    }
-
-    public void changePassword(ActionEvent actionEvent) {
-//        Stage secondaryStage=new Stage();
-//        Button btn1=new Button();
-//        StackPane root1=new StackPane();
-//        btn1.setText("欢迎来到第二舞台");
-//
-//        btn1.setOnAction(new EventHandler<ActionEvent>(){
-//            @Override
-//            public void handle(ActionEvent event) {
-//                System.out.println("欢迎来到第二舞台");
-//            }
-//        });
-//
-//        root1.getChildren().add(btn1);
-//        Scene secondaryScene=new Scene(root1,500,250);
-//        secondaryStage.setScene(secondaryScene);
-//        secondaryStage.setTitle("第二舞台");
-//        secondaryStage.show();
-    }
-
-    public void toMyCenterAction(ActionEvent actionEvent) {
-        main.toMyCenter();
     }
 }
