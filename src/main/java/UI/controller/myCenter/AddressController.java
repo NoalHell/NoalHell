@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AddressController  extends ViewHelper implements Initializable {
+public class AddressController  extends ViewHelper {
 
 //    @FXML
 //    private ComboBox<TableDataModel> tableComBoBox;
@@ -46,15 +46,8 @@ public class AddressController  extends ViewHelper implements Initializable {
 
     private ObservableList<Address> addressSource;
 
-    private Main main;
-
-
-    public Main getMain() {
-        return main;
-    }
-
-    public void setMain(Main main) {
-        this.main = main;
+    @Override
+    public void init() {
         fetchData();
     }
 

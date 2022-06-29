@@ -22,9 +22,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class LoginController extends ViewHelper implements Initializable {
+public class LoginController extends ViewHelper {
 //    private final static Logger log = Logger.getLogger(Controller.class);
-    private Main main;
     @FXML
     ImageView myAvatar;
     @FXML
@@ -99,18 +98,24 @@ public class LoginController extends ViewHelper implements Initializable {
 //        alert.showAndWait();
     }
 
-    public void showLoading(){
+
+    @Override
+    public void init() {
+
+    }
+
+    @Override
+    protected void showLoading(String tip) {
+        super.showLoading(tip);
         loginButton.setDisable(true);
         registerButton.setDisable(true);
     }
 
-    public void hideLoading(){
+    @Override
+    protected void hideLoading() {
+        super.hideLoading();
         loginButton.setDisable(false);
         registerButton.setDisable(false);
-    }
-
-    public void setMain(Main main){
-        this.main = main;
     }
 
     private String nowUsername;

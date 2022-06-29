@@ -25,10 +25,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
-public class HomeController extends ViewHelper implements Initializable {
-
-    Main main;
-
+public class HomeController extends ViewHelper {
     @FXML
     TextField sumPriceField; // 预计花费
     @FXML
@@ -71,31 +68,10 @@ public class HomeController extends ViewHelper implements Initializable {
     @FXML
     private TableColumn<ShowShopCarItemData, Double> shopCarPriceCol;
 
-    public void setMain(Main main) {
-        this.main = main;
-        showLoading(main.getStage(), "加载数据中");
-        new Thread(){
-            @Override
-            public void run() {
-                super.run();
-                try{
-                    getGoodsData();
-                    getCarData();
-                    Platform.runLater(()->{
-                        toast("加载成功!", 2000);
-                    });
-                }catch (Exception e){
-                    Platform.runLater(()->{
-                        toast("加载失败!", 2000);
-                    });
-                }finally {
-                    Platform.runLater(()->{
-                        hideLoading();
-                    });
-                }
-
-            }
-        }.start();
+    @Override
+    public void init() {
+        getGoodsData();
+        getCarData();
     }
 
     private Goods selectGoodsItem;

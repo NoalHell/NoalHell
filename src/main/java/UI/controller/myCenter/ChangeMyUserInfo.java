@@ -7,11 +7,16 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ChangeMyUserInfo extends ViewHelper implements Initializable {
+public class ChangeMyUserInfo extends ViewHelper {
     Main main;
 
     public void setMain(Main main) {
         this.main = main;
+    }
+
+    @Override
+    public void init() {
+
     }
 
     public Main getMain() {

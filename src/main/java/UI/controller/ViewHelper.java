@@ -1,8 +1,8 @@
-
 package UI.controller;
 
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -17,20 +17,54 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
+public abstract class ViewHelper implements Initializable {
+	protected Main main;
+	private Stage stage = new Stage();
 
-/**
- * <code>ViewHelper</code>类实现了一些界面上的方法。
- * @author fengyouchao
- * 
- */
-public abstract class ViewHelper {
+	public Main getMain() {
+		return main;
+	}
+
+	public void setMain(Main main) {
+		this.main = main;
+		this.stage = main.getStage();
+		showLoading("页面初始化中");
+		new Thread(){
+			@Override
+			public void run() {
+				super.run();
+				try{
+					Platform.runLater(()->{
+						ViewHelper.this.init();
+						toast("加载成功!", 2000);
+					});
+				} catch (Exception e){
+					Platform.runLater(()->{
+						toast("页面加载失败",2000);
+					});
+				} finally {
+					Platform.runLater(()->{
+						hideLoading();
+					});
+				}
+			}
+		}.start();
+	}
+
+	public abstract void init();
+
+	public Stage getStage() {
+		return stage;
+	}
 
 	/**
 	 * 一个由浅变深的动画，用来显示信息。
-	 * 
+	 *
 	 * @param message 要显示的信息。
 	 * @param messageLabel 显示此条信息的<code>javafx.scene.control.Label</code>对象
 	 */
@@ -42,7 +76,11 @@ public abstract class ViewHelper {
 		messageLabel.setText(message);
 	}
 
-	public static void toast(String message,int time) {
+	public void toast(String tip){
+		this.toast(tip, 1000);
+	}
+
+	public void toast(String message,int time) {
 		Stage stage=new Stage();
 		stage.initStyle(StageStyle.TRANSPARENT);//舞台透明
 		TimerTask task= new TimerTask() {
@@ -51,15 +89,9 @@ public abstract class ViewHelper {
 				Platform.runLater(()->stage.close());
 			}
 		};
-		init(stage,message);
-		Timer timer=new Timer();
-		timer.schedule(task,time);
-		stage.show();
-	}
 
-	//设置消息
-	private static void init(Stage stage,String msg) {
-		Label label=new Label(msg);//默认信息
+		//设置消息
+		Label label=new Label(message);//默认信息
 		label.setStyle("-fx-background: rgba(56,56,56,0.7);-fx-border-radius: 25;-fx-background-radius: 25");//label透明,圆角
 		label.setLayoutY(500);
 		label.setTextFill(Color.rgb(225,255,226));//消息字体颜色
@@ -70,12 +102,24 @@ public abstract class ViewHelper {
 		Scene scene=new Scene(label);
 		scene.setFill(null);//场景透明
 		stage.setScene(scene);
+
+		Timer timer=new Timer();
+		timer.schedule(task,time);
+		stage.show();
 	}
 
 	private Stage dialogStage;
 	private ProgressIndicator progressIndicator;
 
-	public void showLoading(Stage primaryStage, String tip) {
+	protected void showLoading(String tip){
+		this.showLoading(main.getStage(), tip);
+	}
+
+	protected void showLoading(){
+		this.showLoading(main.getStage(), "加载中");
+	}
+
+	protected void showLoading(Stage primaryStage, String tip) {
 		dialogStage = new Stage();
 		progressIndicator = new ProgressIndicator();
 		// 窗口父子关系
@@ -101,7 +145,15 @@ public abstract class ViewHelper {
 		return dialogStage;
 	}
 
-	public void hideLoading() {
-		dialogStage.close();
+	protected void hideLoading() {
+		if(dialogStage !=null){
+			dialogStage.close();
+		}
+
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
 	}
 }

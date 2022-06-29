@@ -27,9 +27,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
-public class OrderListController extends ViewHelper implements Initializable {
-
-    Main main;
+public class OrderListController extends ViewHelper {
 
     // Order table
     ObservableList<Order> orderSource =  FXCollections.observableArrayList();
@@ -48,26 +46,12 @@ public class OrderListController extends ViewHelper implements Initializable {
     @FXML
     private TableColumn<Order, String> orderRemarkCol;
 
-    public void setMain(Main main) {
-        this.main = main;
-        new Thread(){
-            @Override
-            public void run() {
-                super.run();
-                try{
-                    OrderDao orderDao = new OrderDao();
-                    orderSource.addAll(orderDao.findMyAllByUserId(main.getUser().getId()));
-                    Platform.runLater(()->{
-                        orderTable.setItems(orderSource);
-                    });
-                } catch (Exception e){
-                    e.printStackTrace();
-                }
 
-
-            }
-        }.start();
-
+    @Override
+    public void init() {
+        OrderDao orderDao = new OrderDao();
+        orderSource.addAll(orderDao.findMyAllByUserId(main.getUser().getId()));
+        orderTable.setItems(orderSource);
     }
 
     private Order selectOrderItem;

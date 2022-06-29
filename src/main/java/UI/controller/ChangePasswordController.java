@@ -13,7 +13,7 @@ import javax.persistence.NoResultException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ChangePasswordController extends ViewHelper implements Initializable {
+public class ChangePasswordController extends ViewHelper {
     private Main main;
 
     @FXML
@@ -90,6 +90,11 @@ public class ChangePasswordController extends ViewHelper implements Initializabl
 
     public void setMain(Main main) {
         this.main = main;
+    }
+
+    @Override
+    public void init() {
+
     }
 
     @Override

@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 
@@ -17,11 +18,16 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RegisterController extends ViewHelper implements Initializable {
+public class RegisterController extends ViewHelper  {
     Main main;
 
     public void setMain(Main main) {
         this.main = main;
+    }
+
+    @Override
+    public void init() {
+
     }
 
     public Main getMain() {

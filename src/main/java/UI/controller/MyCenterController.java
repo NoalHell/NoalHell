@@ -23,7 +23,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MyCenterController extends ViewHelper implements Initializable {
+public class MyCenterController extends ViewHelper {
     @FXML
     ImageView myAvatar;
     @FXML
@@ -44,6 +44,11 @@ public class MyCenterController extends ViewHelper implements Initializable {
 
     public void setMain(Main main) {
         this.main = main;
+    }
+
+    @Override
+    public void init() {
+
     }
 
     @Override
