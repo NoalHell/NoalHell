@@ -26,13 +26,22 @@ public class Test {
 //        ArrayList<User> users = userDao.findAll();
 //        users.size();
 
-        Goods goods = new Goods();
-        goods.setName("test");
-        goods.setPrice(100.0);
-        goods.setProduceLocation("昆明");
-
         GoodsDao goodsDao = new GoodsDao();
-        goodsDao.Insert(goods);
+
+//        Goods goods = new Goods();
+//        goods.setName("test");
+//        goods.setPrice(100.0);
+//        goods.setProduceLocation("昆明");
+//        goodsDao.Insert(goods);
+
+        for(int i=0;i<10;i++){
+            Goods g = new Goods("testGoods- "+i, 1, 0);
+            goodsDao.Insert(g);
+        }
+
+
+
+
 
     }
 }

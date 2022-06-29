@@ -84,7 +84,6 @@ public class ChangePasswordController extends ViewHelper {
                         }
                     }
             }.start();
-
         }
     }
 

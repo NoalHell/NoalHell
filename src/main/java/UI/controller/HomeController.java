@@ -175,11 +175,9 @@ public class HomeController extends ViewHelper {
             if(had == null) {
                 ShopCar save = new ShopCar();
                 save.setUserId(main.getUser().getId());
-//                List<Goods> goodsList = new ArrayList<>();
                 ShopCarItem shopCarItem = new ShopCarItem();
                 shopCarItem.setGoods(selectGoodsItem);
                 shopCarItem.setNum(1);
-//                goodsList.add(selectGoodsItem);
 
                 save.addShopCarItem(shopCarItem);
                 shopCarDao.insert(save);

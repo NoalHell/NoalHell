@@ -37,6 +37,12 @@ public class Goods implements Serializable {
 
     public Goods(){}
 
+    public Goods(String name, double price, int sellerId){
+        this.name = name;
+        this.price = price;
+        this.sellId = sellerId;
+    }
+
     public Goods(String name, Double price, Date postTime, String produceLocation,Date produceTime, Date keepTime){
         this.name = name;
         this.price = price;
